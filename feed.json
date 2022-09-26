@@ -1,0 +1,160 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "独白",
+    "description": "博客",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2022/09/19/vue-shi-xian-word-wen-dang-zai-xian-yu-lan-gong-neng-nei-wang-wai-wang/",
+            "url": "http://example.com/2022/09/19/vue-shi-xian-word-wen-dang-zai-xian-yu-lan-gong-neng-nei-wang-wai-wang/",
+            "title": "Vue实现Word文档在线预览功能（内网、外网）！！！",
+            "date_published": "2022-09-19T13:02:45.000Z",
+            "content_html": "<p><strong>内网实现方法：</strong><br>需要下载两个插件，一定要注意！！</p>\n<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">npm i docx-preview@0.1.4</span><br><span class=\"line\"></span><br><span class=\"line\">npm i jszip</span><br><span class=\"line\">````</span><br><span class=\"line\"></span><br><span class=\"line\">正文中引入</span><br></pre></td></tr></tbody></table></figure>\n<div ref=\"preview\" id=\"preview\"></div>\n<script>\n    let docx = require(\"docx-preview\");\n    window.JSZip = require(\"jszip\");\n    \n<pre><code>// 查看文档按钮\nhandleFile(row) &#123;\n     this.getDocx() .then((response) =&gt; &#123;\n              console.log(response);  // response为流文件\n              docx.renderAsync(response.data, this.$refs.preview);\n               // 渲染到页面（着重注意 this.$refs.preview要和&lt;div ref=&quot;preview&quot;&gt;&lt;/div&gt;保持一致）\n            &#125;)\n            .catch(function (error) &#123;&#125;);\n&#125;\n</code></pre>\n<p></script><p></p>\n<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"></span><br><span class=\"line\">外网：</span><br><span class=\"line\">可以用下面这种方式：</span><br></pre></td></tr></tbody></table></figure>\n<iframe :src=\"`https://view.officeapps.live.com/op/view.aspx?src=${downloadUrl}`\" width=\"100%\" :height=\"height\" frameborder=\"1\">\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">有时候使用这种方式会遇到下面提示：</span><br><span class=\"line\">![在这里插入图片描述](6a435d1088624d77b590b4b5e4d9e2a4.png)</span><br><span class=\"line\"></span><br><span class=\"line\">不要因此就直接放弃这种方式，好好找找原因。我这边遇到该情况的原因是因为本地DNS不解析该链接，后将DNS改为</span><br></pre></td></tr></table></figure>\ndns： 101.198.198.198\n      114.114.114.114\n```\n完美的解决了该问题。\n好了，可以轻松实现文档预览啦\n</iframe>",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/vue-xiang-mu-zhong-shi-yong-dai-ti-src-bing-zai-vscode-zhong-kai-qi-lu-jing-zi-dong-ti-shi/",
+            "url": "http://example.com/2022/09/19/vue-xiang-mu-zhong-shi-yong-dai-ti-src-bing-zai-vscode-zhong-kai-qi-lu-jing-zi-dong-ti-shi/",
+            "title": "Vue项目中使用@代替src——并在VScode中开启@路径自动提示",
+            "date_published": "2022-09-19T13:01:51.000Z",
+            "content_html": "<blockquote>\n<ul>\n<li>配置引用路径（以“@”引用为项目的src目录为例）可拆分为如下两步操作<ul>\n<li>配置webpack打包时将“@”解析为项目的src目录</li>\n<li>配置vsCode在路径中输入“@”时的路径提示</li>\n</ul>\n</li>\n</ul>\n</blockquote>\n<blockquote>\n<p>一般的 “路径别名” ：</p>\n<ul>\n<li>@ ——src</li>\n<li>components —— src/components</li>\n</ul>\n</blockquote>\n<p>一共分为3步。</p>\n<h3 id=\"第一步：安装path模块\"><a href=\"#第一步：安装path模块\" class=\"headerlink\" title=\"第一步：安装path模块\"></a>第一步：安装path模块</h3><p>可以先看看自己的<code>node_modules</code>文件里面能不能找到path模块。<br>如果没有，那就安装，终端运行：<br><code>npm install path --save</code></p>\n<h3 id=\"第二步：设置路径别名\"><a href=\"#第二步：设置路径别名\" class=\"headerlink\" title=\"第二步：设置路径别名\"></a>第二步：设置路径别名</h3><p>我的项目使用的是 vue-cli 脚手架 搭建的。<br>首先在和 <code>src</code>并齐的<code>vue.config.js</code>[没有就新建]中，使用<code>path</code>模块，设置一些路径的别名。</p>\n<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br><span class=\"line\">9</span><br><span class=\"line\">10</span><br><span class=\"line\">11</span><br><span class=\"line\">12</span><br><span class=\"line\">13</span><br><span class=\"line\">14</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">const path = require(\"path\");</span><br><span class=\"line\">function resolve(dir) {</span><br><span class=\"line\">  return path.join(__dirname, dir);</span><br><span class=\"line\">} </span><br><span class=\"line\">module.exports = {</span><br><span class=\"line\">  chainWebpack: config =&gt; {</span><br><span class=\"line\">    config.resolve.alias</span><br><span class=\"line\">      .set(\"@\", resolve(\"src\"))</span><br><span class=\"line\">      .set(\"assets\", resolve(\"src/assets\"))</span><br><span class=\"line\">      .set(\"components\", resolve(\"src/components\"))</span><br><span class=\"line\">      .set(\"base\", resolve(\"baseConfig\"))</span><br><span class=\"line\">      .set(\"public\", resolve(\"public\"));</span><br><span class=\"line\">  },</span><br><span class=\"line\">}</span><br></pre></td></tr></tbody></table></figure>\n\n<p>三、<a href=\"https://so.csdn.net/so/search?q=VScode&amp;spm=1001.2101.3001.7020\">VScode</a> 设置路径自动补全<br>在我们进行上述两个步骤之后，我们的@/…是可以正常使用了，但是！我们在编辑器输入@/以后，编辑器不会自动给我们提示。</p>\n<p>那这样的话，我们还不如像以前那样的用./ ../这样式的路径，所以，这个时候，配置编辑器自动提示就十分必要了！</p>\n<p>接下来，我们可以进行下面的操作：</p>\n<ol>\n<li>打开VScode的设置</li>\n<li>点击下面的按钮，打开<code>setting.json</code><br><img src=\"90bf54e322794829842bd7af7e18ee29.png\" alt=\"在这里插入图片描述\"></li>\n<li>第二步也可以通过使用快捷键 <code>ctrl + shift + p</code>召唤搜索框，·搜索<code>setting.json</code></li>\n<li>添加如下代码：<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">{</span><br><span class=\"line\">   \"path-intellisense.mappings\": {</span><br><span class=\"line\">   \t\t\"@\": \"${workspaceRoot}/src\"</span><br><span class=\"line\">\t}</span><br><span class=\"line\">}</span><br></pre></td></tr></tbody></table></figure></li>\n</ol>\n<blockquote>\n<p>以上的所有配置好了，代码确定没有错误之后，我们就可以正常使用@/…的方式来写路径了。不要忘记重启VScode哦！！！！</p>\n</blockquote>\n",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/guan-yu-vue-xin-zeng-inheritattrs/",
+            "url": "http://example.com/2022/09/19/guan-yu-vue-xin-zeng-inheritattrs/",
+            "title": "关于vue新增 -  &  & inheritAttrs",
+            "date_published": "2022-09-19T13:01:22.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/vue-shi-ji-yun-yong-chu-li-token-guo-qi/",
+            "url": "http://example.com/2022/09/19/vue-shi-ji-yun-yong-chu-li-token-guo-qi/",
+            "title": "vue实际运用：处理token过期",
+            "date_published": "2022-09-19T13:01:06.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/vant-uploader-tu-pian-shang-chuan-gen-ju-hou-duan-url-hui-xian-wen-ti/",
+            "url": "http://example.com/2022/09/19/vant-uploader-tu-pian-shang-chuan-gen-ju-hou-duan-url-hui-xian-wen-ti/",
+            "title": "Vant Uploader 图片上传，根据后端url回显问题",
+            "date_published": "2022-09-19T13:00:45.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/react-sheng-ming-zhou-qi/",
+            "url": "http://example.com/2022/09/19/react-sheng-ming-zhou-qi/",
+            "title": "React生命周期",
+            "date_published": "2022-09-19T13:00:31.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/",
+            "url": "http://example.com/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/",
+            "title": "npm run eject 报错This git repository has untracked files or uncommitted changes解决方案",
+            "date_published": "2022-09-19T13:00:14.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/shi-yong-nvm-an-zhuang-nodejs-bing-jie-jue-npm-xia-zai-yi-lai-shi-xiao-wen-ti-zui-quan-liu-cheng/",
+            "url": "http://example.com/2022/09/19/shi-yong-nvm-an-zhuang-nodejs-bing-jie-jue-npm-xia-zai-yi-lai-shi-xiao-wen-ti-zui-quan-liu-cheng/",
+            "title": "使用NVM安装NodeJS并解决npm下载依赖失效问题（最全流程）",
+            "date_published": "2022-09-19T12:59:57.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/zheng-que-li-jie-bi-bao-ji-bi-bao-shi-yong-chang-jing/",
+            "url": "http://example.com/2022/09/19/zheng-que-li-jie-bi-bao-ji-bi-bao-shi-yong-chang-jing/",
+            "title": "正确理解闭包及闭包使用场景",
+            "date_published": "2022-09-19T12:59:44.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/qian-hou-duan-fen-chi-kai-fa-zhi-quan-xian-pian-ji-vue-lu-you-shou-wei-next-next-to-replace-true-next-shuo-ming/",
+            "url": "http://example.com/2022/09/19/qian-hou-duan-fen-chi-kai-fa-zhi-quan-xian-pian-ji-vue-lu-you-shou-wei-next-next-to-replace-true-next-shuo-ming/",
+            "title": "前后端分离开发之权限篇及 VUE路由守卫 next() / next({ ...to, replace: true }) / next(‘/‘) 说明",
+            "date_published": "2022-09-19T12:59:28.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/vue3-zheng-he-mock-js-2022/",
+            "url": "http://example.com/2022/09/19/vue3-zheng-he-mock-js-2022/",
+            "title": "vue3 整合 mock.js（2022）",
+            "date_published": "2022-09-19T12:59:16.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/typescript-xue-xi-ri-ji/",
+            "url": "http://example.com/2022/09/19/typescript-xue-xi-ri-ji/",
+            "title": "TypeScript学习日记",
+            "date_published": "2022-09-19T12:59:02.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/javascript-chang-yong-ba-chong-ji-cheng-fang-shi/",
+            "url": "http://example.com/2022/09/19/javascript-chang-yong-ba-chong-ji-cheng-fang-shi/",
+            "title": "JavaScript常用八种继承方式",
+            "date_published": "2022-09-19T12:58:50.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/javascript-yuan-xing-yuan-xing-lian-ji-cheng/",
+            "url": "http://example.com/2022/09/19/javascript-yuan-xing-yuan-xing-lian-ji-cheng/",
+            "title": "javaScript 原型、原型链、继承",
+            "date_published": "2022-09-19T12:58:36.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/vue-de-kuo-zhan-yun-suan-fu/",
+            "url": "http://example.com/2022/09/19/vue-de-kuo-zhan-yun-suan-fu/",
+            "title": "VUE的扩展运算符",
+            "date_published": "2022-09-19T12:58:24.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/javascript-zhong-de-nei-cun-yi-chu-he-nei-cun-xie-lu/",
+            "url": "http://example.com/2022/09/19/javascript-zhong-de-nei-cun-yi-chu-he-nei-cun-xie-lu/",
+            "title": "JavaScript中的内存溢出和内存泄露",
+            "date_published": "2022-09-19T12:58:07.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/vue-qing-chu-form-biao-dan-er-ci-dan-chu-biao-dan-shi-shang-ci-de-ti-shi-xin-xi/",
+            "url": "http://example.com/2022/09/19/vue-qing-chu-form-biao-dan-er-ci-dan-chu-biao-dan-shi-shang-ci-de-ti-shi-xin-xi/",
+            "title": "Vue 清除Form 表单二次弹出表单时上次的提示信息",
+            "date_published": "2022-09-19T12:57:49.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/elementui-zhi-cascader-ji-lian-xuan-ze-qi-zhi-ding-value-label/",
+            "url": "http://example.com/2022/09/19/elementui-zhi-cascader-ji-lian-xuan-ze-qi-zhi-ding-value-label/",
+            "title": "ElementUI 之 Cascader 级联选择器指定 value label",
+            "date_published": "2022-09-19T12:57:25.000Z",
+            "content_html": "",
+            "tags": []
+        },
+        {
+            "id": "http://example.com/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/",
+            "url": "http://example.com/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/",
+            "title": "取消el-upload自带动画效果及图片不裁剪功能",
+            "date_published": "2022-09-19T12:51:55.000Z",
+            "content_html": "<p>在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式</p>\n<figure class=\"highlight javascript\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"comment\">/*去除upload组件过渡效果*/</span></span><br><span class=\"line\">.<span class=\"property\">el</span>-upload-list__item {</span><br><span class=\"line\">  <span class=\"attr\">transition</span>: none !important;</span><br><span class=\"line\">}</span><br><span class=\"line\"> .<span class=\"property\">el</span>-upload-list__item-thumbnail {</span><br><span class=\"line\">    <span class=\"comment\">/* 图片在方框内显示长边 */</span></span><br><span class=\"line\">    object-<span class=\"attr\">fit</span>: scale-down !important;</span><br><span class=\"line\">}</span><br></pre></td></tr></tbody></table></figure>\n\n<p>如果加上后仍然没有效果，可以加上::v-deep深度选择器</p>\n<figure class=\"highlight javascript\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"comment\">/*去除upload组件过渡效果*/</span></span><br><span class=\"line\">::v-deep .<span class=\"property\">el</span>-upload-list__item {</span><br><span class=\"line\">  <span class=\"attr\">transition</span>: none !important;</span><br><span class=\"line\">}</span><br><span class=\"line\">::v-deep .<span class=\"property\">el</span>-upload-list__item-thumbnail {</span><br><span class=\"line\">    <span class=\"comment\">/* 图片在方框内显示长边 */</span></span><br><span class=\"line\">    object-<span class=\"attr\">fit</span>: scale-down !important;</span><br><span class=\"line\">}</span><br></pre></td></tr></tbody></table></figure>\n<p>一起试试吧！！</p>\n",
+            "tags": []
+        }
+    ]
+}

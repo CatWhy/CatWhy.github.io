@@ -1,15 +1,9 @@
-.highlight {
-  position: relative; }
-
 .btn-copy {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: sticky;
+  height: 12px;
+  left: 96%;
   width: 32px;
-  height: 24px;
+  margin-left: 96%;
   cursor: pointer;
   border-radius: 6px;
   -webkit-user-select: none;
@@ -26,5 +20,5 @@
 .btn-copy:hover {
   color: #000; }
 
-.highlight:hover .btn-copy {
+pre:hover .btn-copy {
   opacity: 1; }

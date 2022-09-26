@@ -1,0 +1,14 @@
+code[class*="language-"],  
+pre[class*="language-"] {  
+    font-family: "jetbrains-mono", sans-serif;  
+}
+pre[class*="language-"] {  
+    padding-top: 2em;  
+}  
+  
+pre[class*="language-"].line-numbers {  
+    position: static;  
+    padding-left: 3.8em;  
+    counter-reset: linenumber;  
+    overflow: auto;  
+}
