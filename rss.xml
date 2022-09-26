@@ -8,11 +8,11 @@
         <pubDate>Mon, 19 Sep 2022 21:02:45 +0800</pubDate>
         <lastBuildDate>Mon, 19 Sep 2022 21:02:45 +0800</lastBuildDate>
         <category>javascript</category>
+        <category>原型模式</category>
         <category>前端</category>
-        <category>开发语言</category>
         <category>elementui</category>
         <category>vue.js</category>
-        <category>原型模式</category>
+        <category>开发语言</category>
         <category>react.js</category>
         <category>typescript</category>
         <category>Vue</category>
@@ -408,8 +408,8 @@ closure = null; // 销毁闭包
             <title>vue3 整合 mock.js（2022）</title>
             <link>http://example.com/2022/09/19/vue3-zheng-he-mock-js-2022/</link>
             <category>前端</category>
-            <category>开发语言</category>
             <category>vue.js</category>
+            <category>开发语言</category>
             <pubDate>Mon, 19 Sep 2022 20:59:16 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;第一步：安装&#34;&gt;&lt;a href=&#34;#第一步：安装&#34; class=&#34;headerlink&#34; title=&#34;第一步：安装&#34;&gt;&lt;/a&gt;第一步：安装&lt;/h2&gt;&lt;h3 id=&#34;1-安装mockjs&#34;&gt;&lt;a href=&#34;#1-安装mockjs&#34; class=&#34;headerlink&#34; title=&#34;1. 安装mockjs&#34;&gt;&lt;/a&gt;1. 安装mockjs&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;// 将mockjs 安装在 devDependencies 中，只能在生产环境中起作用&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm install mockjs -D&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-安装axios&#34;&gt;&lt;a href=&#34;#2-安装axios&#34; class=&#34;headerlink&#34; title=&#34;2. 安装axios&#34;&gt;&lt;/a&gt;2. 安装axios&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm i axios --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -513,8 +513,8 @@ closure = null; // 销毁闭包
             <title>JavaScript常用八种继承方式</title>
             <link>http://example.com/2022/09/19/javascript-chang-yong-ba-chong-ji-cheng-fang-shi/</link>
             <category>javascript</category>
-            <category>前端</category>
             <category>原型模式</category>
+            <category>前端</category>
             <pubDate>Mon, 19 Sep 2022 20:58:50 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;原型链继承&#34;&gt;&lt;a href=&#34;#原型链继承&#34; class=&#34;headerlink&#34; title=&#34;原型链继承&#34;&gt;&lt;/a&gt;原型链继承&lt;/h1&gt;&lt;p&gt;构造函数、原型和实例之间的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个原型对象的指针。&lt;br&gt;继承的本质就是复制，即重写原型对象，代之以一个新类型的实例。&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;function SuperType() {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    this.property = true;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;SuperType.prototype.getSuperValue = function() {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    return this.property;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;function SubType() {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    this.subproperty = false;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 这里是关键，创建SuperType的实例，并将该实例赋值给SubType.prototype&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;SubType.prototype = new SuperType(); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;SubType.prototype.getSubValue = function() {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    return this.subproperty;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var instance = new SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(instance.getSuperValue()); // true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;

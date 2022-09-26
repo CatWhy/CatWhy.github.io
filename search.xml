@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JavaScript中的内存溢出和内存泄露</title>
-    <url>/2022/09/19/javascript-zhong-de-nei-cun-yi-chu-he-nei-cun-xie-lu/</url>
-    <content><![CDATA[<h2 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h2><ul>
-<li>概念：一种程序运行出现的错误，当程序运行需要的内存超过了剩余的内存时，就出抛出内存溢出的错误。</li>
-<li>举例：<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var obj = {}</span><br><span class="line">for (var i = 0; i &lt; 10000; i++) {</span><br><span class="line">	obj[i] = new Array(1000000000)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<img src="https://img-blog.csdnimg.cn/2a7712a5634d4d2e9a9380eef6f28115.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center"></li>
-</ul>
-<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><p>概念：占用的内存没有及时释放，内存泄露积累多了就容易导致内存溢出。</p>
-<ul>
-<li>常见的内存泄露:<br>（1）意外的全局变量<br>（2）没有及时清理的计时器或回调函数*闭包</li>
-<li>举例：<br>（1）意外的全局变量<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn() {</span><br><span class="line">	a= 3</span><br><span class="line">	console.log(a)</span><br><span class="line">}</span><br><span class="line">fn()</span><br><span class="line">// fn() = null</span><br></pre></td></tr></tbody></table></figure>
-（2）启动循环定时器后不清理<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var intervalId = setInterval(function () {</span><br><span class="line">	console.log( '----')</span><br><span class="line">}, 1000)</span><br><span class="line">// cLearInterval(intervaLId)</span><br></pre></td></tr></tbody></table></figure>
-（3）闭包，不及时释放<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn1() {</span><br><span class="line">	var a = 4</span><br><span class="line">	function fn2() {</span><br><span class="line">		console.log(++a)</span><br><span class="line">	}</span><br><span class="line">	return fn2</span><br><span class="line">}</span><br><span class="line">var f = fn1()</span><br><span class="line">f()</span><br><span class="line">// f = nulL</span><br></pre></td></tr></tbody></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-        <tag>前端</tag>
-        <tag>开发语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ElementUI 之 Cascader 级联选择器指定 value label</title>
-    <url>/2022/09/19/elementui-zhi-cascader-ji-lian-xuan-ze-qi-zhi-ding-value-label/</url>
-    <content><![CDATA[<p>ElementUI 的 Cascader 级联选择器对 :options=”options” 里的数据格式是有特定要求的：input 框显示的值是 options 里的 label 值。如果 options 的键值对不是 value label ，就需要 props 来配置。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;el-cascader</span><br><span class="line"> ref="cascader"</span><br><span class="line">    v-model="companyForm.industry"</span><br><span class="line">    style="width: 500px; "</span><br><span class="line">    :options="belongIndustry"</span><br><span class="line">    :props="{ multiple: true, emitPath:false }"</span><br><span class="line">    :clearable="true"</span><br><span class="line">    @change="nodeValue"</span><br><span class="line">/&gt;</span><br><span class="line"></span><br><span class="line">export default { </span><br><span class="line">　　data() {</span><br><span class="line">　　　　belongIndustry:[</span><br><span class="line">　　　　　　{ id: 1, name: '第一层', children: [ id: 11, name: '水果']},</span><br><span class="line">　　　　　　{ id: 2, name: '第二层', children: [ id: 22, name: '蔬菜'] },</span><br><span class="line">　　　　]</span><br><span class="line">　　}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/bbb2df70a4a2492e9fa2f83901c8405a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-        <tag>elementui</tag>
-        <tag>vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript常用八种继承方式</title>
     <url>/2022/09/19/javascript-chang-yong-ba-chong-ji-cheng-fang-shi/</url>
     <content><![CDATA[<h1 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h1><p>构造函数、原型和实例之间的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个原型对象的指针。<br>继承的本质就是复制，即重写原型对象，代之以一个新类型的实例。</p>
@@ -73,8 +38,43 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function _inherits(subType, superType) {</span><br><span class="line">  </span><br><span class="line">    // 创建对象，创建父类原型的一个副本</span><br><span class="line">    // 增强对象，弥补因重写原型而失去的默认的constructor 属性</span><br><span class="line">    // 指定对象，将新创建的对象赋值给子类的原型</span><br><span class="line">    subType.prototype = Object.create(superType &amp;&amp; superType.prototype, {</span><br><span class="line">        constructor: {</span><br><span class="line">            value: subType,</span><br><span class="line">            enumerable: false,</span><br><span class="line">            writable: true,</span><br><span class="line">            configurable: true</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    </span><br><span class="line">    if (superType) {</span><br><span class="line">        Object.setPrototypeOf </span><br><span class="line">            ? Object.setPrototypeOf(subType, superType) </span><br><span class="line">            : subType.__proto__ = superType;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>]]></content>
       <tags>
         <tag>javascript</tag>
-        <tag>前端</tag>
         <tag>原型模式</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ElementUI 之 Cascader 级联选择器指定 value label</title>
+    <url>/2022/09/19/elementui-zhi-cascader-ji-lian-xuan-ze-qi-zhi-ding-value-label/</url>
+    <content><![CDATA[<p>ElementUI 的 Cascader 级联选择器对 :options=”options” 里的数据格式是有特定要求的：input 框显示的值是 options 里的 label 值。如果 options 的键值对不是 value label ，就需要 props 来配置。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;el-cascader</span><br><span class="line"> ref="cascader"</span><br><span class="line">    v-model="companyForm.industry"</span><br><span class="line">    style="width: 500px; "</span><br><span class="line">    :options="belongIndustry"</span><br><span class="line">    :props="{ multiple: true, emitPath:false }"</span><br><span class="line">    :clearable="true"</span><br><span class="line">    @change="nodeValue"</span><br><span class="line">/&gt;</span><br><span class="line"></span><br><span class="line">export default { </span><br><span class="line">　　data() {</span><br><span class="line">　　　　belongIndustry:[</span><br><span class="line">　　　　　　{ id: 1, name: '第一层', children: [ id: 11, name: '水果']},</span><br><span class="line">　　　　　　{ id: 2, name: '第二层', children: [ id: 22, name: '蔬菜'] },</span><br><span class="line">　　　　]</span><br><span class="line">　　}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/bbb2df70a4a2492e9fa2f83901c8405a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+        <tag>elementui</tag>
+        <tag>vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript中的内存溢出和内存泄露</title>
+    <url>/2022/09/19/javascript-zhong-de-nei-cun-yi-chu-he-nei-cun-xie-lu/</url>
+    <content><![CDATA[<h2 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h2><ul>
+<li>概念：一种程序运行出现的错误，当程序运行需要的内存超过了剩余的内存时，就出抛出内存溢出的错误。</li>
+<li>举例：<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var obj = {}</span><br><span class="line">for (var i = 0; i &lt; 10000; i++) {</span><br><span class="line">	obj[i] = new Array(1000000000)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<img src="https://img-blog.csdnimg.cn/2a7712a5634d4d2e9a9380eef6f28115.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center"></li>
+</ul>
+<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><p>概念：占用的内存没有及时释放，内存泄露积累多了就容易导致内存溢出。</p>
+<ul>
+<li>常见的内存泄露:<br>（1）意外的全局变量<br>（2）没有及时清理的计时器或回调函数*闭包</li>
+<li>举例：<br>（1）意外的全局变量<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn() {</span><br><span class="line">	a= 3</span><br><span class="line">	console.log(a)</span><br><span class="line">}</span><br><span class="line">fn()</span><br><span class="line">// fn() = null</span><br></pre></td></tr></tbody></table></figure>
+（2）启动循环定时器后不清理<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var intervalId = setInterval(function () {</span><br><span class="line">	console.log( '----')</span><br><span class="line">}, 1000)</span><br><span class="line">// cLearInterval(intervaLId)</span><br></pre></td></tr></tbody></table></figure>
+（3）闭包，不及时释放<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn1() {</span><br><span class="line">	var a = 4</span><br><span class="line">	function fn2() {</span><br><span class="line">		console.log(++a)</span><br><span class="line">	}</span><br><span class="line">	return fn2</span><br><span class="line">}</span><br><span class="line">var f = fn1()</span><br><span class="line">f()</span><br><span class="line">// f = nulL</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+        <tag>前端</tag>
+        <tag>开发语言</tag>
       </tags>
   </entry>
   <entry>
@@ -185,22 +185,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vant Uploader 图片上传，根据后端url回显问题</title>
-    <url>/2022/09/19/vant-uploader-tu-pian-shang-chuan-gen-ju-hou-duan-url-hui-xian-wen-ti/</url>
-    <content><![CDATA[<p>今天在开发中，用到van-uploader上传。在修改用户信息的时候，需要用到图片回显。</p>
-<p>当图片信息，后端返回的是一个url地址。如何在组件中进行回显呢。</p>
-<p>在官方文档中有提到，可以有自定义上传样式。那我们是不是可以把button换成img，src就用后端返回的url，就可以进行回显了呢。</p>
-<p><img src="https://img-blog.csdnimg.cn/4f0089fee79b468b9e1dd12c9ee8cd46.png"><br>把 van-button换成van-image</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;van-uploader</span><br><span class="line">    :max-count="1"</span><br><span class="line">    :after-read="handleUpload"</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;van-image  width="60" height="60" </span><br><span class="line">             :src="formTenant.merchantHead?formTenant.merchantHead:require('@/assets/morentu.png')" /&gt;</span><br><span class="line">&lt;/van-uploader&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p> formTenant.merchantHead就是后端返回的url，以上用了三元表达式，如果后端有返回值，就渲染返回值，如果没有则渲染默认图片。</p>
-<p>以上就是Vant Uploader 图片回显，特此记录。</p>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-        <tag>vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VUE的扩展运算符</title>
     <url>/2022/09/19/vue-de-kuo-zhan-yun-suan-fu/</url>
     <content><![CDATA[<p>含义：<br>扩展运算符（ spread ）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。<br>操作数组：</p>
@@ -221,6 +205,22 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">this.$nextTick(()=&gt;{</span><br><span class="line">  this.$refs['form'].clearValidate() // 只清除清除验证</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>]]></content>
       <tags>
         <tag>前端</tag>
+        <tag>vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vant Uploader 图片上传，根据后端url回显问题</title>
+    <url>/2022/09/19/vant-uploader-tu-pian-shang-chuan-gen-ju-hou-duan-url-hui-xian-wen-ti/</url>
+    <content><![CDATA[<p>今天在开发中，用到van-uploader上传。在修改用户信息的时候，需要用到图片回显。</p>
+<p>当图片信息，后端返回的是一个url地址。如何在组件中进行回显呢。</p>
+<p>在官方文档中有提到，可以有自定义上传样式。那我们是不是可以把button换成img，src就用后端返回的url，就可以进行回显了呢。</p>
+<p><img src="https://img-blog.csdnimg.cn/4f0089fee79b468b9e1dd12c9ee8cd46.png"><br>把 van-button换成van-image</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;van-uploader</span><br><span class="line">    :max-count="1"</span><br><span class="line">    :after-read="handleUpload"</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;van-image  width="60" height="60" </span><br><span class="line">             :src="formTenant.merchantHead?formTenant.merchantHead:require('@/assets/morentu.png')" /&gt;</span><br><span class="line">&lt;/van-uploader&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p> formTenant.merchantHead就是后端返回的url，以上用了三元表达式，如果后端有返回值，就渲染返回值，如果没有则渲染默认图片。</p>
+<p>以上就是Vant Uploader 图片回显，特此记录。</p>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
         <tag>vue.js</tag>
       </tags>
   </entry>
@@ -386,8 +386,8 @@
 ]]></content>
       <tags>
         <tag>前端</tag>
-        <tag>开发语言</tag>
         <tag>vue.js</tag>
+        <tag>开发语言</tag>
       </tags>
   </entry>
   <entry>
@@ -421,6 +421,56 @@
 <ul>
 <li>同时发起两个或以上的请求时，其他接口如何重试<br>两个接口几乎同时发起和返回，第一个接口会进入刷新token后重试的流程，而第二个接口需要先存起来，然后等刷新token后再重试。同样，如果同时发起三个请求，此时需要缓存后两个接口，等刷新token后再重试；<br>当第二个过期的请求进来，token正在刷新，我们先将这个请求存到一个数组队列中，想办法让这个请求处于等待中，一直等到刷新token后再逐个重试清空请求队列。<br>将请求存进队列中后，同时返回一个Promise，让这个Promise一直处于Pending状态（即不调用resolve），此时这个请求就会一直等啊等，只要我们不执行resolve，这个请求就会一直在等待。当刷新请求的接口返回来后，我们再调用resolve，逐个重试。<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 是否正在刷新的标记</span><br><span class="line">let isRefreshing = false</span><br><span class="line">// 重试队列，每一项将是一个待执行的函数形式</span><br><span class="line">let requests = []</span><br><span class="line"></span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">  	// 说明token过期了,获取新的token</span><br><span class="line">	 if (code === 401) {</span><br><span class="line">	 	const config = response.config</span><br><span class="line">	 	//判断一下状态</span><br><span class="line">		if( !isRefreshing ){</span><br><span class="line">			//修改状态，进入更新token阶段</span><br><span class="line">			isRefreshing = true</span><br><span class="line">			// 获取当前的请求</span><br><span class="line">			return refreshToken().then(res =&gt; {</span><br><span class="line">			// 刷新token成功，将最新的token更新到header中，同时保存在localStorage中</span><br><span class="line">		      const { token } = res.data</span><br><span class="line">		      service.setToken(token)</span><br><span class="line">		      </span><br><span class="line">		      //重置失败请求的配置</span><br><span class="line">		      config.headers['X-Token'] = token</span><br><span class="line">		      config.baseURL = '' "</span><br><span class="line">		      </span><br><span class="line">		      //已经刷新了token，将所有队列中的请求进行重试</span><br><span class="line">		      requests.forEach(cb =&gt; cb(token))</span><br><span class="line">		      // 重试完了别忘了清空这个队列</span><br><span class="line">		      requests = []</span><br><span class="line">		      </span><br><span class="line">		      return service(config)</span><br><span class="line">			}).catch( res=&gt;{</span><br><span class="line">				//重新请求token失败，跳转到登录页</span><br><span class="line">				window.location.href = '/login '</span><br><span class="line">			} ).finally( ()=&gt;{</span><br><span class="line">				//完成之后在关闭状态</span><br><span class="line">				isRefreshing = false</span><br><span class="line">			} )</span><br><span class="line">		} else{</span><br><span class="line">			 // 正在刷新token，返回一个未执行resolve的promise</span><br><span class="line">			 return new Promise((resolve) =&gt; {</span><br><span class="line">	         // 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行</span><br><span class="line">		         requests.push((token) =&gt; {</span><br><span class="line">			          config.baseURL = ''</span><br><span class="line">			          config.headers['X-Token'] = token</span><br><span class="line">			          resolve(instance(config))</span><br><span class="line">		       	 })</span><br><span class="line">	     	 })</span><br><span class="line">		}</span><br><span class="line">	 }</span><br><span class="line">	 --------------------------------------------------------------</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于vue新增 - inheritAttrs &amp; listeners &amp; attrs</title>
+    <url>/2022/09/19/guan-yu-vue-xin-zeng-attrs-listeners-inheritattrs/</url>
+    <content><![CDATA[<h2 id="attrs"><a href="#attrs" class="headerlink" title="$attrs"></a><strong>$attrs</strong></h2><ul>
+<li>只读属性</li>
+<li>包含了父作用域中不作为 props 被识别 (且获取) 的特性绑定 (class 和 style 除外)</li>
+<li>可以通过v-bind=”$attrs”传入内部组件</li>
+</ul>
+<p><strong>包含了父作用域中不作为 props 被识别 (且获取) 的特性绑定 (class 和 style 除外)</strong><br>父组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    // 子组件上绑定了三个值 - happy、peter、attrs</span><br><span class="line">    &lt;child :happy="happy" :peter="peter" **attrs="$attrs"**&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  data(){</span><br><span class="line">    return {</span><br><span class="line">      happy: 'happy',</span><br><span class="line">      peter: 'peter'</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  </span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  // 只将happy作为prop获取</span><br><span class="line">  props: ['happy'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  mounted(){</span><br><span class="line">    console.log(this.$attrs) // {attrs: "$attrs", peter: "peter"}</span><br><span class="line">  },</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>可以通过v-bind=”$attrs”传入内部组件</strong><br>例：向孙子组件传值</p>
+<p>父组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    // 子组件上绑定了三个值 - happy、peter、attrs</span><br><span class="line">    &lt;child :happy="happy" :peter="peter" attrs="$attrs"&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  data(){</span><br><span class="line">    return {</span><br><span class="line">      happy: 'happy',</span><br><span class="line">      peter: 'peter'</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child-child **v-bind="$attrs"**&gt;&lt;/child-child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import childChild from './childChild.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  props: ['happy'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  components: {</span><br><span class="line">    childChild</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>孙子组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;peter：{{peter}}&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'childChild',</span><br><span class="line">  // 子组件v-bind="$attrs"后，孙子组件可以直接 props: ['peter']</span><br><span class="line">  // props只能获取$attrs中存在的值，如获取 happy，输出为undefined</span><br><span class="line">  props: ['peter'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  mounted(){</span><br><span class="line">    console.log(this.peter) // peter</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="listeners"><a href="#listeners" class="headerlink" title="$listeners"></a>$listeners</h3><ul>
+<li>只读属性</li>
+<li>包含了父作用域中（不含.native修饰器的）v-on时间监听器</li>
+<li>可以通过 v-on=”$listeners” 传入内部组件</li>
+</ul>
+<p> <strong>包含了父作用域中（不含.native修饰器的）v-on时间监听器</strong></p>
+<p>父组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child @editFather="editFather" @click="testListeners" @testNative.native="testNative"&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  },</span><br><span class="line">  methods: {</span><br><span class="line">    editFather(){},</span><br><span class="line">    testListeners(){},</span><br><span class="line">    testNative(){}</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  mounted(){</span><br><span class="line">    console.log(this.$listeners) // { editFather: f, click: f }</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>可以通过 v-on=”$listeners” 传入内部组件</strong><br>例：孙子组件修改父组件的值</p>
+<p>父组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child :peter="peter" attrs="$attrs" @editFather="editFather"&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  data(){</span><br><span class="line">    return {</span><br><span class="line">      peter: 'peter'</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  },</span><br><span class="line">  methods: {</span><br><span class="line">    editFather(){</span><br><span class="line">      this.peter = 'hello, peter'</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child-child v-bind="$attrs" v-on="$listeners"&gt;&lt;/child-child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import childChild from './childChild.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  props: [],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  components: {</span><br><span class="line">    childChild</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>孙子组件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;peter： {{peter}}&lt;/div&gt;</span><br><span class="line">    &lt;button @click="editFather"&gt;改变peter&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'childChild',</span><br><span class="line">  props: ['peter'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  methods: {</span><br><span class="line">    editFather(){</span><br><span class="line">      // 孙子组件调用父组件的方法</span><br><span class="line">      this.$emit("editFather")</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="inheritAttrs"><a href="#inheritAttrs" class="headerlink" title="inheritAttrs"></a>inheritAttrs</h3><ul>
+<li>boolean类型</li>
+<li>默认值：true</li>
+<li>true：父作用域不作为 props 被识别 (且获取) 的特性将会被“回退”且作为普通的HTML特性应用在子组件的根元素上。</li>
+<li>false：去掉默认行为</li>
+<li>该属性不影响<code>class\style</code></li>
+<li>该属性不影响<code>attr</code> ， 无 论 设 置 为<code>true</code>或<code> false</code>， 子 组 件 都 可 以 通 过 attrs，无论设置为true或false，子组件都可以通过attrs，无论设置为true或false，子组件都可以通过attrs获取到父组件传过来的属性值</li>
+</ul>
+<h3 id="inheritAttrs-true"><a href="#inheritAttrs-true" class="headerlink" title="inheritAttrs: true"></a>inheritAttrs: true</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 父组件引用</span><br><span class="line">&lt;customEvent</span><br><span class="line">  @click="testEvent" testAttr='testAttr_value' testAttr2='testAttr2' class="bushiba?"</span><br><span class="line">  @myEvent="emitFN" ref="childtest"</span><br><span class="line">&gt;</span><br><span class="line">&lt;/customEvent&gt;</span><br><span class="line"> </span><br><span class="line">// 子组件 customEvent</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt; </span><br><span class="line">    根节点这个 div 标签将继承非props的所有 attr 和 事件；</span><br><span class="line">    (vue内置的特殊attribute是不会继承的)</span><br><span class="line"> </span><br><span class="line">    &lt;div&gt;单节点组件1&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;单节点组件2&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import { defineComponent } from 'vue'</span><br><span class="line">export default defineComponent({</span><br><span class="line">  inheritAttrs: true,</span><br><span class="line">})</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/ba2a102f1909472486d5167c744fb9db.png" alt="在这里插入图片描述"></p>
+<h3 id="inheritAttrs-false"><a href="#inheritAttrs-false" class="headerlink" title="inheritAttrs: false"></a>inheritAttrs: false</h3><p>设置为false后，不论单节点还是多节点的组件，都不会继承任何 attr 和 事件！<br><img src="https://img-blog.csdnimg.cn/19be332b43104d9b8b6d0b7270a574b9.png" alt="在这里插入图片描述"></p>
 ]]></content>
   </entry>
   <entry>
@@ -477,56 +527,6 @@
       </tags>
   </entry>
   <entry>
-    <title>关于vue新增 - inheritAttrs &amp; listeners &amp; attrs</title>
-    <url>/2022/09/19/guan-yu-vue-xin-zeng-attrs-listeners-inheritattrs/</url>
-    <content><![CDATA[<h2 id="attrs"><a href="#attrs" class="headerlink" title="$attrs"></a><strong>$attrs</strong></h2><ul>
-<li>只读属性</li>
-<li>包含了父作用域中不作为 props 被识别 (且获取) 的特性绑定 (class 和 style 除外)</li>
-<li>可以通过v-bind=”$attrs”传入内部组件</li>
-</ul>
-<p><strong>包含了父作用域中不作为 props 被识别 (且获取) 的特性绑定 (class 和 style 除外)</strong><br>父组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    // 子组件上绑定了三个值 - happy、peter、attrs</span><br><span class="line">    &lt;child :happy="happy" :peter="peter" **attrs="$attrs"**&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  data(){</span><br><span class="line">    return {</span><br><span class="line">      happy: 'happy',</span><br><span class="line">      peter: 'peter'</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  </span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  // 只将happy作为prop获取</span><br><span class="line">  props: ['happy'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  mounted(){</span><br><span class="line">    console.log(this.$attrs) // {attrs: "$attrs", peter: "peter"}</span><br><span class="line">  },</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>可以通过v-bind=”$attrs”传入内部组件</strong><br>例：向孙子组件传值</p>
-<p>父组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    // 子组件上绑定了三个值 - happy、peter、attrs</span><br><span class="line">    &lt;child :happy="happy" :peter="peter" attrs="$attrs"&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  data(){</span><br><span class="line">    return {</span><br><span class="line">      happy: 'happy',</span><br><span class="line">      peter: 'peter'</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child-child **v-bind="$attrs"**&gt;&lt;/child-child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import childChild from './childChild.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  props: ['happy'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  components: {</span><br><span class="line">    childChild</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>孙子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;peter：{{peter}}&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'childChild',</span><br><span class="line">  // 子组件v-bind="$attrs"后，孙子组件可以直接 props: ['peter']</span><br><span class="line">  // props只能获取$attrs中存在的值，如获取 happy，输出为undefined</span><br><span class="line">  props: ['peter'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  mounted(){</span><br><span class="line">    console.log(this.peter) // peter</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="listeners"><a href="#listeners" class="headerlink" title="$listeners"></a>$listeners</h3><ul>
-<li>只读属性</li>
-<li>包含了父作用域中（不含.native修饰器的）v-on时间监听器</li>
-<li>可以通过 v-on=”$listeners” 传入内部组件</li>
-</ul>
-<p> <strong>包含了父作用域中（不含.native修饰器的）v-on时间监听器</strong></p>
-<p>父组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child @editFather="editFather" @click="testListeners" @testNative.native="testNative"&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  },</span><br><span class="line">  methods: {</span><br><span class="line">    editFather(){},</span><br><span class="line">    testListeners(){},</span><br><span class="line">    testNative(){}</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  mounted(){</span><br><span class="line">    console.log(this.$listeners) // { editFather: f, click: f }</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>可以通过 v-on=”$listeners” 传入内部组件</strong><br>例：孙子组件修改父组件的值</p>
-<p>父组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child :peter="peter" attrs="$attrs" @editFather="editFather"&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from './child.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'TestPage',</span><br><span class="line">  data(){</span><br><span class="line">    return {</span><br><span class="line">      peter: 'peter'</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  components: {</span><br><span class="line">    child</span><br><span class="line">  },</span><br><span class="line">  methods: {</span><br><span class="line">    editFather(){</span><br><span class="line">      this.peter = 'hello, peter'</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child-child v-bind="$attrs" v-on="$listeners"&gt;&lt;/child-child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import childChild from './childChild.vue'</span><br><span class="line">export default {</span><br><span class="line">  name: 'child',</span><br><span class="line">  props: [],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  components: {</span><br><span class="line">    childChild</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>孙子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;peter： {{peter}}&lt;/div&gt;</span><br><span class="line">    &lt;button @click="editFather"&gt;改变peter&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  name: 'childChild',</span><br><span class="line">  props: ['peter'],</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  methods: {</span><br><span class="line">    editFather(){</span><br><span class="line">      // 孙子组件调用父组件的方法</span><br><span class="line">      this.$emit("editFather")</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line"> };</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="inheritAttrs"><a href="#inheritAttrs" class="headerlink" title="inheritAttrs"></a>inheritAttrs</h3><ul>
-<li>boolean类型</li>
-<li>默认值：true</li>
-<li>true：父作用域不作为 props 被识别 (且获取) 的特性将会被“回退”且作为普通的HTML特性应用在子组件的根元素上。</li>
-<li>false：去掉默认行为</li>
-<li>该属性不影响<code>class\style</code></li>
-<li>该属性不影响<code>attr</code> ， 无 论 设 置 为<code>true</code>或<code> false</code>， 子 组 件 都 可 以 通 过 attrs，无论设置为true或false，子组件都可以通过attrs，无论设置为true或false，子组件都可以通过attrs获取到父组件传过来的属性值</li>
-</ul>
-<h3 id="inheritAttrs-true"><a href="#inheritAttrs-true" class="headerlink" title="inheritAttrs: true"></a>inheritAttrs: true</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 父组件引用</span><br><span class="line">&lt;customEvent</span><br><span class="line">  @click="testEvent" testAttr='testAttr_value' testAttr2='testAttr2' class="bushiba?"</span><br><span class="line">  @myEvent="emitFN" ref="childtest"</span><br><span class="line">&gt;</span><br><span class="line">&lt;/customEvent&gt;</span><br><span class="line"> </span><br><span class="line">// 子组件 customEvent</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt; </span><br><span class="line">    根节点这个 div 标签将继承非props的所有 attr 和 事件；</span><br><span class="line">    (vue内置的特殊attribute是不会继承的)</span><br><span class="line"> </span><br><span class="line">    &lt;div&gt;单节点组件1&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;单节点组件2&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import { defineComponent } from 'vue'</span><br><span class="line">export default defineComponent({</span><br><span class="line">  inheritAttrs: true,</span><br><span class="line">})</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/ba2a102f1909472486d5167c744fb9db.png" alt="在这里插入图片描述"></p>
-<h3 id="inheritAttrs-false"><a href="#inheritAttrs-false" class="headerlink" title="inheritAttrs: false"></a>inheritAttrs: false</h3><p>设置为false后，不论单节点还是多节点的组件，都不会继承任何 attr 和 事件！<br><img src="https://img-blog.csdnimg.cn/19be332b43104d9b8b6d0b7270a574b9.png" alt="在这里插入图片描述"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>前后端分离开发之权限篇及VUE路由守卫</title>
     <url>/2022/09/19/qian-hou-duan-fen-chi-kai-fa-zhi-quan-xian-pian-ji-vue-lu-you-shou-wei-next-next-to-replace-true-next-shuo-ming/</url>
     <content><![CDATA[<p>写项目过程中在权限部分遇到了不少有关<code>next()</code>的问题，解决完之后发现对于权限篇的整体逻辑清晰不少，在这里记录一下。<br>首先是路由守卫，是不是感觉简简单单</p>
@@ -562,22 +562,6 @@
         <tag>javascript</tag>
         <tag>前端</tag>
         <tag>vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>取消el-upload自带动画效果及图片不裁剪功能</title>
-    <url>/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/</url>
-    <content><![CDATA[<p>在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">.<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line"> .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>如果加上后仍然没有效果，可以加上::v-deep深度选择器</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>一起试试吧！！</p>
-]]></content>
-      <tags>
-        <tag>vue.js</tag>
-        <tag>动画</tag>
-        <tag>css3</tag>
       </tags>
   </entry>
   <entry>
@@ -660,6 +644,22 @@ closure = null; // 销毁闭包
       <tags>
         <tag>javascript</tag>
         <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>取消el-upload自带动画效果及图片不裁剪功能</title>
+    <url>/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/</url>
+    <content><![CDATA[<p>在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">.<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line"> .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果加上后仍然没有效果，可以加上::v-deep深度选择器</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>一起试试吧！！</p>
+]]></content>
+      <tags>
+        <tag>vue.js</tag>
+        <tag>动画</tag>
+        <tag>css3</tag>
       </tags>
   </entry>
 </search>
