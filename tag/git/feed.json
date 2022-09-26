@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "独白 • All posts by \"git\" tag",
+    "description": "博客",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/",
+            "url": "http://example.com/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/",
+            "title": "npm run eject 报错This git repository has untracked files or uncommitted changes解决方案",
+            "date_published": "2022-09-19T13:00:14.000Z",
+            "content_html": "<p>在创建 React 项目之后，使用 npm run eject 命令会报错：This git repository has untracked files or uncommitted changes。这个的原因是因为初始化项目之后，该项目并没有本地 git 仓库，而此项目目录下又有 .gitignore 文件，所以此时会向上级寻找未提交的项目。</p>\n<h2 id=\"解决方法\"><a href=\"#解决方法\" class=\"headerlink\" title=\"解决方法\"></a>解决方法</h2><p>1.初始化仓库</p>\n<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">git init</span><br></pre></td></tr></tbody></table></figure>\n<p>2.添加并提交</p>\n<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">git add .</span><br><span class=\"line\">git commit -m '初始化项目'</span><br></pre></td></tr></tbody></table></figure>\n<p>3.重新执行</p>\n<figure class=\"highlight plaintext\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">npm run eject</span><br></pre></td></tr></tbody></table></figure>",
+            "tags": [
+                "git",
+                "npm",
+                "node.js"
+            ]
+        }
+    ]
+}

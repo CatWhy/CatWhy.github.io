@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>独白 • Posts by &#34;vue&#34; tag</title>
+        <link>http://example.com</link>
+        <description>博客</description>
+        <language>zh-CN</language>
+        <pubDate>Mon, 19 Sep 2022 21:02:45 +0800</pubDate>
+        <lastBuildDate>Mon, 19 Sep 2022 21:02:45 +0800</lastBuildDate>
+        <category>elementui</category>
+        <category>vue.js</category>
+        <category>javascript</category>
+        <category>前端</category>
+        <category>开发语言</category>
+        <category>原型模式</category>
+        <category>react.js</category>
+        <category>typescript</category>
+        <category>Vue</category>
+        <category>git</category>
+        <category>npm</category>
+        <category>node.js</category>
+        <category>动画</category>
+        <category>css3</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/09/19/vue-shi-xian-word-wen-dang-zai-xian-yu-lan-gong-neng-nei-wang-wai-wang/</guid>
+            <title>Vue实现Word文档在线预览功能（内网、外网）！！！</title>
+            <link>http://example.com/2022/09/19/vue-shi-xian-word-wen-dang-zai-xian-yu-lan-gong-neng-nei-wang-wai-wang/</link>
+            <category>Vue</category>
+            <pubDate>Mon, 19 Sep 2022 21:02:45 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;内网实现方法：&#34;&gt;&lt;a href=&#34;#内网实现方法：&#34; class=&#34;headerlink&#34; title=&#34;内网实现方法：&#34;&gt;&lt;/a&gt;&lt;strong&gt;内网实现方法：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;需要下载两个插件，一定要注意！！&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm i docx-preview@0.1.4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm i jszip&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;正文中引入&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;div ref=&#34;preview&#34;  id=&#34;preview&#34; &amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	let docx = require(&#34;docx-preview&#34;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	window.JSZip = require(&#34;jszip&#34;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 查看文档按钮&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    handleFile(row) {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		this.getDocx() .then((response) =&amp;gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			console.log(response);  // response为流文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			docx.renderAsync(response.data, this.$refs.preview);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			// 渲染到页面（着重注意 this.$refs.preview要和&amp;lt;div ref=&#34;preview&#34;&amp;gt;&amp;lt;/div&amp;gt;保持一致）&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		})&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		.catch(function (error) {});&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;外网实现方法：&#34;&gt;&lt;a href=&#34;#外网实现方法：&#34; class=&#34;headerlink&#34; title=&#34;外网实现方法：&#34;&gt;&lt;/a&gt;&lt;strong&gt;外网实现方法：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;可以用下面这种方式：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;iframe&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	:src=&#34;`https://view.officeapps.live.com/op/view.aspx?src=${downloadUrl}`&#34;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	width=&#34;100%&#34;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	:height=&#34;height&#34;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	frameborder=&#34;1&#34;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;有时候使用这种方式会遇到下面提示：&lt;br&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/6a435d1088624d77b590b4b5e4d9e2a4.png#pic_center&#34;&gt;&lt;/p&gt;
+&lt;p&gt;不要因此就直接放弃这种方式，好好找找原因。我这边遇到该情况的原因是因为本地DNS不解析该链接，后将DNS改为&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;dns: 101.198.198.198&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     114.114.114.114&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;完美的解决了该问题。&lt;br&gt;好了，可以轻松实现文档预览啦&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/09/19/vue-zhong-shi-yong-el-data-picker-bao-cuo-avoid-mutating-a-prop-directly-since-the-value-will-be-overwrite/</guid>
+            <title>Vue中使用el-data-picker报错 Avoid mutating a prop directly since the value will be overwrite</title>
+            <link>http://example.com/2022/09/19/vue-zhong-shi-yong-el-data-picker-bao-cuo-avoid-mutating-a-prop-directly-since-the-value-will-be-overwrite/</link>
+            <category>Vue</category>
+            <pubDate>Mon, 19 Sep 2022 21:02:04 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/0d3194fbdcfb40b9979505b291540af0.png&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;锁定组件，发现是 el-date-picker 组件抛出的警告。通过在 github 上搜索，最终找到了答案&lt;br&gt;问题出在了这个 PR #21806 增加了 props placement 用来适应位置，但是之前的代码 created 时有给 placement 赋值。&lt;br&gt;this.placement = PLACEMENT_MAP[this.align] || PLACEMENT_MAP.left;&lt;br&gt;说白了之前 placement 是 data 的对象，现在变成 props 了，然后修改就报错了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;解决&#34;&gt;&lt;a href=&#34;#解决&#34; class=&#34;headerlink&#34; title=&#34;解决&#34;&gt;&lt;/a&gt;解决&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;想要解决这个问题，可以修改版本到 2.15.8&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;npm uninstall element-ui&lt;br&gt;npm install &lt;a href=&#34;mailto:element-ui@2.15.8&#34;&gt;element-ui@2.15.8&lt;/a&gt; -s&lt;br&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/aab330da73bb4df2bd068434372343c1.png&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;br&gt;&lt;strong&gt;注意：这里不要【‘^’】,否则还会报错&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/09/19/vue-xiang-mu-zhong-shi-yong-dai-ti-src-bing-zai-vscode-zhong-kai-qi-lu-jing-zi-dong-ti-shi/</guid>
+            <title>Vue项目中使用@代替src——并在VScode中开启@路径自动提示</title>
+            <link>http://example.com/2022/09/19/vue-xiang-mu-zhong-shi-yong-dai-ti-src-bing-zai-vscode-zhong-kai-qi-lu-jing-zi-dong-ti-shi/</link>
+            <category>Vue</category>
+            <pubDate>Mon, 19 Sep 2022 21:01:51 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;code&gt;配置引用路径（以“@”引用为项目的src目录为例）可拆分为如下两步操作&lt;/code&gt;&lt;br&gt; &lt;code&gt; - 配置webpack打包时将“@”解析为项目的src目录&lt;/code&gt;&lt;br&gt; &lt;code&gt; - 配置vsCode在路径中输入“@”时的路径提示&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;一般的 “路径别名” ：&lt;/code&gt;&lt;br&gt;&lt;code&gt;+ @ ——src&lt;/code&gt;&lt;br&gt;&lt;code&gt;+ components —— src/components&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一共分为3步。&lt;/p&gt;
+&lt;h3 id=&#34;第一步：安装path模块&#34;&gt;&lt;a href=&#34;#第一步：安装path模块&#34; class=&#34;headerlink&#34; title=&#34;第一步：安装path模块&#34;&gt;&lt;/a&gt;第一步：安装path模块&lt;/h3&gt;&lt;p&gt;可以先看看自己的&lt;code&gt;node_modules&lt;/code&gt;文件里面能不能找到path模块。&lt;br&gt;如果没有，那就安装，终端运行：&lt;br&gt;&lt;code&gt;npm install path --save&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;第二步：设置路径别名&#34;&gt;&lt;a href=&#34;#第二步：设置路径别名&#34; class=&#34;headerlink&#34; title=&#34;第二步：设置路径别名&#34;&gt;&lt;/a&gt;第二步：设置路径别名&lt;/h3&gt;&lt;p&gt;我的项目使用的是 vue-cli 脚手架 搭建的。&lt;br&gt;首先在和 &lt;code&gt;src&lt;/code&gt;并齐的&lt;code&gt;vue.config.js&lt;/code&gt;[没有就新建]中，使用&lt;code&gt;path&lt;/code&gt;模块，设置一些路径的别名。&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;const path = require(&#34;path&#34;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;function resolve(dir) {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  return path.join(__dirname, dir);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;} &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;module.exports = {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  chainWebpack: config =&amp;gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    config.resolve.alias&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      .set(&#34;@&#34;, resolve(&#34;src&#34;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      .set(&#34;assets&#34;, resolve(&#34;src/assets&#34;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      .set(&#34;components&#34;, resolve(&#34;src/components&#34;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      .set(&#34;base&#34;, resolve(&#34;baseConfig&#34;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      .set(&#34;public&#34;, resolve(&#34;public&#34;));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  },&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;第三步：VScode-设置路径自动补全&#34;&gt;&lt;a href=&#34;#第三步：VScode-设置路径自动补全&#34; class=&#34;headerlink&#34; title=&#34;第三步：VScode 设置路径自动补全&#34;&gt;&lt;/a&gt;第三步：&lt;a href=&#34;https://so.csdn.net/so/search?q=VScode&amp;amp;spm=1001.2101.3001.7020&#34;&gt;VScode&lt;/a&gt; 设置路径自动补全&lt;/h3&gt;&lt;p&gt;在我们进行上述两个步骤之后，我们的@/…是可以正常使用了，但是！我们在编辑器输入@/以后，编辑器不会自动给我们提示。&lt;/p&gt;
+&lt;p&gt;那这样的话，我们还不如像以前那样的用./ ../这样式的路径，所以，这个时候，配置编辑器自动提示就十分必要了！&lt;/p&gt;
+&lt;p&gt;接下来，我们可以进行下面的操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开VScode的设置&lt;/li&gt;
+&lt;li&gt;点击下面的按钮，打开&lt;code&gt;setting.json&lt;/code&gt;&lt;br&gt;&lt;img src=&#34;%5B90bf54e322794829842bd7af7e18ee29.png%5D(https://img-blog.csdnimg.cn/90bf54e322794829842bd7af7e18ee29.png)&#34;&gt;&lt;/li&gt;
+&lt;li&gt;第二步也可以通过使用快捷键 &lt;code&gt;ctrl + shift + p&lt;/code&gt;召唤搜索框，·搜索&lt;code&gt;setting.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加如下代码：&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &#34;path-intellisense.mappings&#34;: {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   		&#34;@&#34;: &#34;${workspaceRoot}/src&#34;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以上的所有配置好了，代码确定没有错误之后，我们就可以正常使用@/…的方式来写路径了。不要忘记重启VScode哦！！！！&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

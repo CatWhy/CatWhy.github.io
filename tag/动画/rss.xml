@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>独白 • Posts by &#34;动画&#34; tag</title>
+        <link>http://example.com</link>
+        <description>博客</description>
+        <language>zh-CN</language>
+        <pubDate>Mon, 19 Sep 2022 20:51:55 +0800</pubDate>
+        <lastBuildDate>Mon, 19 Sep 2022 20:51:55 +0800</lastBuildDate>
+        <category>elementui</category>
+        <category>vue.js</category>
+        <category>javascript</category>
+        <category>前端</category>
+        <category>开发语言</category>
+        <category>原型模式</category>
+        <category>react.js</category>
+        <category>typescript</category>
+        <category>Vue</category>
+        <category>git</category>
+        <category>npm</category>
+        <category>node.js</category>
+        <category>动画</category>
+        <category>css3</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/</guid>
+            <title>取消el-upload自带动画效果及图片不裁剪功能</title>
+            <link>http://example.com/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/</link>
+            <category>vue.js</category>
+            <category>动画</category>
+            <category>css3</category>
+            <pubDate>Mon, 19 Sep 2022 20:51:55 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/*去除upload组件过渡效果*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;.&lt;span class=&#34;property&#34;&gt;el&lt;/span&gt;-upload-list__item {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;transition&lt;/span&gt;: none !important;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; .&lt;span class=&#34;property&#34;&gt;el&lt;/span&gt;-upload-list__item-thumbnail {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;/* 图片在方框内显示长边 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    object-&lt;span class=&#34;attr&#34;&gt;fit&lt;/span&gt;: scale-down !important;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果加上后仍然没有效果，可以加上::v-deep深度选择器&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/*去除upload组件过渡效果*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;::v-deep .&lt;span class=&#34;property&#34;&gt;el&lt;/span&gt;-upload-list__item {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;transition&lt;/span&gt;: none !important;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;::v-deep .&lt;span class=&#34;property&#34;&gt;el&lt;/span&gt;-upload-list__item-thumbnail {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;/* 图片在方框内显示长边 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    object-&lt;span class=&#34;attr&#34;&gt;fit&lt;/span&gt;: scale-down !important;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;一起试试吧！！&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

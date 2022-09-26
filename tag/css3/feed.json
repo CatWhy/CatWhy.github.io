@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "独白 • All posts by \"css3\" tag",
+    "description": "博客",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/",
+            "url": "http://example.com/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/",
+            "title": "取消el-upload自带动画效果及图片不裁剪功能",
+            "date_published": "2022-09-19T12:51:55.000Z",
+            "content_html": "<p>在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式</p>\n<figure class=\"highlight javascript\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"comment\">/*去除upload组件过渡效果*/</span></span><br><span class=\"line\">.<span class=\"property\">el</span>-upload-list__item {</span><br><span class=\"line\">  <span class=\"attr\">transition</span>: none !important;</span><br><span class=\"line\">}</span><br><span class=\"line\"> .<span class=\"property\">el</span>-upload-list__item-thumbnail {</span><br><span class=\"line\">    <span class=\"comment\">/* 图片在方框内显示长边 */</span></span><br><span class=\"line\">    object-<span class=\"attr\">fit</span>: scale-down !important;</span><br><span class=\"line\">}</span><br></pre></td></tr></tbody></table></figure>\n\n<p>如果加上后仍然没有效果，可以加上::v-deep深度选择器</p>\n<figure class=\"highlight javascript\"><table><tbody><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"comment\">/*去除upload组件过渡效果*/</span></span><br><span class=\"line\">::v-deep .<span class=\"property\">el</span>-upload-list__item {</span><br><span class=\"line\">  <span class=\"attr\">transition</span>: none !important;</span><br><span class=\"line\">}</span><br><span class=\"line\">::v-deep .<span class=\"property\">el</span>-upload-list__item-thumbnail {</span><br><span class=\"line\">    <span class=\"comment\">/* 图片在方框内显示长边 */</span></span><br><span class=\"line\">    object-<span class=\"attr\">fit</span>: scale-down !important;</span><br><span class=\"line\">}</span><br></pre></td></tr></tbody></table></figure>\n<p>一起试试吧！！</p>\n",
+            "tags": [
+                "vue.js",
+                "动画",
+                "css3"
+            ]
+        }
+    ]
+}
