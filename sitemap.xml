@@ -229,7 +229,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -237,98 +237,98 @@
   
   <url>
     <loc>http://example.com/tags/javascript/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/elementui/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/vue-js/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/elementui/</loc>
+    <lastmod>2022-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/vue-js/</loc>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/react-js/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/typescript/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Vue/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/git/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/npm/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/node-js/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E5%8A%A8%E7%94%BB/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/css3/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

@@ -8,12 +8,12 @@
         <pubDate>Mon, 19 Sep 2022 21:00:45 +0800</pubDate>
         <lastBuildDate>Mon, 19 Sep 2022 21:00:45 +0800</lastBuildDate>
         <category>javascript</category>
-        <category>原型模式</category>
         <category>前端</category>
+        <category>开发语言</category>
         <category>elementui</category>
         <category>vue.js</category>
-        <category>开发语言</category>
         <category>react.js</category>
+        <category>原型模式</category>
         <category>typescript</category>
         <category>Vue</category>
         <category>git</category>
@@ -80,8 +80,8 @@
             <title>vue3 整合 mock.js（2022）</title>
             <link>http://example.com/2022/09/19/vue3-zheng-he-mock-js-2022/</link>
             <category>前端</category>
-            <category>vue.js</category>
             <category>开发语言</category>
+            <category>vue.js</category>
             <pubDate>Mon, 19 Sep 2022 20:59:16 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;第一步：安装&#34;&gt;&lt;a href=&#34;#第一步：安装&#34; class=&#34;headerlink&#34; title=&#34;第一步：安装&#34;&gt;&lt;/a&gt;第一步：安装&lt;/h2&gt;&lt;h3 id=&#34;1-安装mockjs&#34;&gt;&lt;a href=&#34;#1-安装mockjs&#34; class=&#34;headerlink&#34; title=&#34;1. 安装mockjs&#34;&gt;&lt;/a&gt;1. 安装mockjs&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;// 将mockjs 安装在 devDependencies 中，只能在生产环境中起作用&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm install mockjs -D&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-安装axios&#34;&gt;&lt;a href=&#34;#2-安装axios&#34; class=&#34;headerlink&#34; title=&#34;2. 安装axios&#34;&gt;&lt;/a&gt;2. 安装axios&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm i axios --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
