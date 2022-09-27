@@ -7,27 +7,27 @@
         <language>zh-CN</language>
         <pubDate>Mon, 19 Sep 2022 21:00:14 +0800</pubDate>
         <lastBuildDate>Mon, 19 Sep 2022 21:00:14 +0800</lastBuildDate>
+        <category>elementui</category>
+        <category>vue.js</category>
         <category>javascript</category>
         <category>前端</category>
         <category>开发语言</category>
-        <category>elementui</category>
-        <category>vue.js</category>
-        <category>react.js</category>
         <category>原型模式</category>
+        <category>react.js</category>
         <category>typescript</category>
         <category>Vue</category>
-        <category>git</category>
         <category>npm</category>
         <category>node.js</category>
+        <category>git</category>
         <category>动画</category>
         <category>css3</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/</guid>
             <title>npm run eject 报错This git repository has untracked files or uncommitted changes解决方案</title>
             <link>http://example.com/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/</link>
-            <category>git</category>
             <category>npm</category>
             <category>node.js</category>
+            <category>git</category>
             <pubDate>Mon, 19 Sep 2022 21:00:14 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;在创建 React 项目之后，使用 npm run eject 命令会报错：This git repository has untracked files or uncommitted changes。这个的原因是因为初始化项目之后，该项目并没有本地 git 仓库，而此项目目录下又有 .gitignore 文件，所以此时会向上级寻找未提交的项目。&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;&lt;a href=&#34;#解决方法&#34; class=&#34;headerlink&#34; title=&#34;解决方法&#34;&gt;&lt;/a&gt;解决方法&lt;/h2&gt;&lt;p&gt;1.初始化仓库&lt;/p&gt;

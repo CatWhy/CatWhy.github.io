@@ -236,6 +236,20 @@
 
   
   <url>
+    <loc>http://example.com/tags/elementui/</loc>
+    <lastmod>2022-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/vue-js/</loc>
+    <lastmod>2022-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/javascript/</loc>
     <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -257,14 +271,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/elementui/</loc>
-    <lastmod>2022-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/vue-js/</loc>
+    <loc>http://example.com/tags/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -272,13 +279,6 @@
   
   <url>
     <loc>http://example.com/tags/react-js/</loc>
-    <lastmod>2022-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -299,13 +299,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/git/</loc>
-    <lastmod>2022-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/npm/</loc>
     <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -314,6 +307,13 @@
   
   <url>
     <loc>http://example.com/tags/node-js/</loc>
+    <lastmod>2022-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/git/</loc>
     <lastmod>2022-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
