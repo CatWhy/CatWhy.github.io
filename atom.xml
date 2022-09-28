@@ -7,15 +7,15 @@
     <category term="elementui" />
     <category term="vue.js" />
     <category term="javascript" />
+    <category term="原型模式" />
     <category term="前端" />
     <category term="开发语言" />
-    <category term="原型模式" />
     <category term="react.js" />
     <category term="typescript" />
     <category term="Vue" />
+    <category term="git" />
     <category term="npm" />
     <category term="node.js" />
-    <category term="git" />
     <category term="动画" />
     <category term="css3" />
     <entry>
@@ -222,9 +222,9 @@
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git commit -m &#39;初始化项目&#39;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;3.重新执行&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm run eject&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="git" />
         <category term="npm" />
         <category term="node.js" />
-        <category term="git" />
         <updated>2022-09-19T13:00:14.000Z</updated>
     </entry>
     <entry>
@@ -543,8 +543,8 @@ closure = null; // 销毁闭包
 &lt;p&gt;&lt;code&gt;extends&lt;/code&gt;继承的核心代码如下，其实现和上述的寄生组合式继承方式一样&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;function _inherits(subType, superType) {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 创建对象，创建父类原型的一个副本&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 增强对象，弥补因重写原型而失去的默认的constructor 属性&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 指定对象，将新创建的对象赋值给子类的原型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    subType.prototype = Object.create(superType &amp;amp;&amp;amp; superType.prototype, {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        constructor: {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            value: subType,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            enumerable: false,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            writable: true,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            configurable: true&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        }&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    });&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if (superType) {&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Object.setPrototypeOf &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            ? Object.setPrototypeOf(subType, superType) &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            : subType.__proto__ = superType;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    }&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="javascript" />
-        <category term="前端" />
         <category term="原型模式" />
+        <category term="前端" />
         <updated>2022-09-19T12:58:50.000Z</updated>
     </entry>
     <entry>

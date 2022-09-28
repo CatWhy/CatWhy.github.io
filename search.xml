@@ -14,28 +14,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript中的内存溢出和内存泄露</title>
-    <url>/2022/09/19/javascript-zhong-de-nei-cun-yi-chu-he-nei-cun-xie-lu/</url>
-    <content><![CDATA[<h2 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h2><ul>
-<li>概念：一种程序运行出现的错误，当程序运行需要的内存超过了剩余的内存时，就出抛出内存溢出的错误。</li>
-<li>举例：<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var obj = {}</span><br><span class="line">for (var i = 0; i &lt; 10000; i++) {</span><br><span class="line">	obj[i] = new Array(1000000000)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<img src="https://img-blog.csdnimg.cn/2a7712a5634d4d2e9a9380eef6f28115.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center"></li>
-</ul>
-<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><p>概念：占用的内存没有及时释放，内存泄露积累多了就容易导致内存溢出。</p>
-<ul>
-<li>常见的内存泄露:<br>（1）意外的全局变量<br>（2）没有及时清理的计时器或回调函数*闭包</li>
-<li>举例：<br>（1）意外的全局变量<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn() {</span><br><span class="line">	a= 3</span><br><span class="line">	console.log(a)</span><br><span class="line">}</span><br><span class="line">fn()</span><br><span class="line">// fn() = null</span><br></pre></td></tr></tbody></table></figure>
-（2）启动循环定时器后不清理<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var intervalId = setInterval(function () {</span><br><span class="line">	console.log( '----')</span><br><span class="line">}, 1000)</span><br><span class="line">// cLearInterval(intervaLId)</span><br></pre></td></tr></tbody></table></figure>
-（3）闭包，不及时释放<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn1() {</span><br><span class="line">	var a = 4</span><br><span class="line">	function fn2() {</span><br><span class="line">		console.log(++a)</span><br><span class="line">	}</span><br><span class="line">	return fn2</span><br><span class="line">}</span><br><span class="line">var f = fn1()</span><br><span class="line">f()</span><br><span class="line">// f = nulL</span><br></pre></td></tr></tbody></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-        <tag>前端</tag>
-        <tag>开发语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript常用八种继承方式</title>
     <url>/2022/09/19/javascript-chang-yong-ba-chong-ji-cheng-fang-shi/</url>
     <content><![CDATA[<h1 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h1><p>构造函数、原型和实例之间的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个原型对象的指针。<br>继承的本质就是复制，即重写原型对象，代之以一个新类型的实例。</p>
@@ -73,8 +51,30 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function _inherits(subType, superType) {</span><br><span class="line">  </span><br><span class="line">    // 创建对象，创建父类原型的一个副本</span><br><span class="line">    // 增强对象，弥补因重写原型而失去的默认的constructor 属性</span><br><span class="line">    // 指定对象，将新创建的对象赋值给子类的原型</span><br><span class="line">    subType.prototype = Object.create(superType &amp;&amp; superType.prototype, {</span><br><span class="line">        constructor: {</span><br><span class="line">            value: subType,</span><br><span class="line">            enumerable: false,</span><br><span class="line">            writable: true,</span><br><span class="line">            configurable: true</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    </span><br><span class="line">    if (superType) {</span><br><span class="line">        Object.setPrototypeOf </span><br><span class="line">            ? Object.setPrototypeOf(subType, superType) </span><br><span class="line">            : subType.__proto__ = superType;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>]]></content>
       <tags>
         <tag>javascript</tag>
-        <tag>前端</tag>
         <tag>原型模式</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript中的内存溢出和内存泄露</title>
+    <url>/2022/09/19/javascript-zhong-de-nei-cun-yi-chu-he-nei-cun-xie-lu/</url>
+    <content><![CDATA[<h2 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h2><ul>
+<li>概念：一种程序运行出现的错误，当程序运行需要的内存超过了剩余的内存时，就出抛出内存溢出的错误。</li>
+<li>举例：<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var obj = {}</span><br><span class="line">for (var i = 0; i &lt; 10000; i++) {</span><br><span class="line">	obj[i] = new Array(1000000000)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<img src="https://img-blog.csdnimg.cn/2a7712a5634d4d2e9a9380eef6f28115.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center"></li>
+</ul>
+<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><p>概念：占用的内存没有及时释放，内存泄露积累多了就容易导致内存溢出。</p>
+<ul>
+<li>常见的内存泄露:<br>（1）意外的全局变量<br>（2）没有及时清理的计时器或回调函数*闭包</li>
+<li>举例：<br>（1）意外的全局变量<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn() {</span><br><span class="line">	a= 3</span><br><span class="line">	console.log(a)</span><br><span class="line">}</span><br><span class="line">fn()</span><br><span class="line">// fn() = null</span><br></pre></td></tr></tbody></table></figure>
+（2）启动循环定时器后不清理<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">var intervalId = setInterval(function () {</span><br><span class="line">	console.log( '----')</span><br><span class="line">}, 1000)</span><br><span class="line">// cLearInterval(intervaLId)</span><br></pre></td></tr></tbody></table></figure>
+（3）闭包，不及时释放<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function fn1() {</span><br><span class="line">	var a = 4</span><br><span class="line">	function fn2() {</span><br><span class="line">		console.log(++a)</span><br><span class="line">	}</span><br><span class="line">	return fn2</span><br><span class="line">}</span><br><span class="line">var f = fn1()</span><br><span class="line">f()</span><br><span class="line">// f = nulL</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+        <tag>前端</tag>
+        <tag>开发语言</tag>
       </tags>
   </entry>
   <entry>
@@ -112,6 +112,22 @@
         <tag>vue.js</tag>
         <tag>javascript</tag>
         <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vant Uploader 图片上传，根据后端url回显问题</title>
+    <url>/2022/09/19/vant-uploader-tu-pian-shang-chuan-gen-ju-hou-duan-url-hui-xian-wen-ti/</url>
+    <content><![CDATA[<p>今天在开发中，用到van-uploader上传。在修改用户信息的时候，需要用到图片回显。</p>
+<p>当图片信息，后端返回的是一个url地址。如何在组件中进行回显呢。</p>
+<p>在官方文档中有提到，可以有自定义上传样式。那我们是不是可以把button换成img，src就用后端返回的url，就可以进行回显了呢。</p>
+<p><img src="https://img-blog.csdnimg.cn/4f0089fee79b468b9e1dd12c9ee8cd46.png"><br>把 van-button换成van-image</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;van-uploader</span><br><span class="line">    :max-count="1"</span><br><span class="line">    :after-read="handleUpload"</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;van-image  width="60" height="60" </span><br><span class="line">             :src="formTenant.merchantHead?formTenant.merchantHead:require('@/assets/morentu.png')" /&gt;</span><br><span class="line">&lt;/van-uploader&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p> formTenant.merchantHead就是后端返回的url，以上用了三元表达式，如果后端有返回值，就渲染返回值，如果没有则渲染默认图片。</p>
+<p>以上就是Vant Uploader 图片回显，特此记录。</p>
+]]></content>
+      <tags>
+        <tag>vue.js</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -197,22 +213,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vant Uploader 图片上传，根据后端url回显问题</title>
-    <url>/2022/09/19/vant-uploader-tu-pian-shang-chuan-gen-ju-hou-duan-url-hui-xian-wen-ti/</url>
-    <content><![CDATA[<p>今天在开发中，用到van-uploader上传。在修改用户信息的时候，需要用到图片回显。</p>
-<p>当图片信息，后端返回的是一个url地址。如何在组件中进行回显呢。</p>
-<p>在官方文档中有提到，可以有自定义上传样式。那我们是不是可以把button换成img，src就用后端返回的url，就可以进行回显了呢。</p>
-<p><img src="https://img-blog.csdnimg.cn/4f0089fee79b468b9e1dd12c9ee8cd46.png"><br>把 van-button换成van-image</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;van-uploader</span><br><span class="line">    :max-count="1"</span><br><span class="line">    :after-read="handleUpload"</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;van-image  width="60" height="60" </span><br><span class="line">             :src="formTenant.merchantHead?formTenant.merchantHead:require('@/assets/morentu.png')" /&gt;</span><br><span class="line">&lt;/van-uploader&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p> formTenant.merchantHead就是后端返回的url，以上用了三元表达式，如果后端有返回值，就渲染返回值，如果没有则渲染默认图片。</p>
-<p>以上就是Vant Uploader 图片回显，特此记录。</p>
-]]></content>
-      <tags>
-        <tag>vue.js</tag>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue 清除Form 表单二次弹出表单时上次的提示信息</title>
     <url>/2022/09/19/vue-qing-chu-form-biao-dan-er-ci-dan-chu-biao-dan-shi-shang-ci-de-ti-shi-xin-xi/</url>
     <content><![CDATA[<p>二次打开表单，验证提示信息还在，如何解决呢？<br><img src="https://img-blog.csdnimg.cn/912b4eb3c3954c43a43d49cdcc2d8ba6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_14,color_FFFFFF,t_70,g_se,x_16"><br>话不多说，直接上代码<br>在弹出表单方法内加入下面代码即可<br><strong>①清除表单内容和清除表单验证消息</strong></p>
@@ -243,26 +243,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue实现Word文档在线预览功能（内网、外网）！！！</title>
-    <url>/2022/09/19/vue-shi-xian-word-wen-dang-zai-xian-yu-lan-gong-neng-nei-wang-wai-wang/</url>
-    <content><![CDATA[<h2 id="内网实现方法："><a href="#内网实现方法：" class="headerlink" title="内网实现方法："></a><strong>内网实现方法：</strong></h2><p>需要下载两个插件，一定要注意！！</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm i docx-preview@0.1.4</span><br><span class="line"></span><br><span class="line">npm i jszip</span><br></pre></td></tr></tbody></table></figure>
-
-<p>正文中引入</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;div ref="preview"  id="preview" &gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	let docx = require("docx-preview");</span><br><span class="line">	window.JSZip = require("jszip");</span><br><span class="line">	</span><br><span class="line">    // 查看文档按钮</span><br><span class="line">    handleFile(row) {</span><br><span class="line">		this.getDocx() .then((response) =&gt; {</span><br><span class="line">			console.log(response);  // response为流文件</span><br><span class="line">			docx.renderAsync(response.data, this.$refs.preview);</span><br><span class="line">			// 渲染到页面（着重注意 this.$refs.preview要和&lt;div ref="preview"&gt;&lt;/div&gt;保持一致）</span><br><span class="line">		})</span><br><span class="line">		.catch(function (error) {});</span><br><span class="line">	}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="外网实现方法："><a href="#外网实现方法：" class="headerlink" title="外网实现方法："></a><strong>外网实现方法：</strong></h2><p>可以用下面这种方式：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;iframe</span><br><span class="line">	:src="`https://view.officeapps.live.com/op/view.aspx?src=${downloadUrl}`"</span><br><span class="line">	width="100%"</span><br><span class="line">	:height="height"</span><br><span class="line">	frameborder="1"</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>有时候使用这种方式会遇到下面提示：<br><img src="https://img-blog.csdnimg.cn/6a435d1088624d77b590b4b5e4d9e2a4.png#pic_center"></p>
-<p>不要因此就直接放弃这种方式，好好找找原因。我这边遇到该情况的原因是因为本地DNS不解析该链接，后将DNS改为</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">dns: 101.198.198.198</span><br><span class="line">     114.114.114.114</span><br></pre></td></tr></tbody></table></figure>
-<p>完美的解决了该问题。<br>好了，可以轻松实现文档预览啦</p>
-]]></content>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue项目中使用@代替src——并在VScode中开启@路径自动提示</title>
     <url>/2022/09/19/vue-xiang-mu-zhong-shi-yong-dai-ti-src-bing-zai-vscode-zhong-kai-qi-lu-jing-zi-dong-ti-shi/</url>
     <content><![CDATA[<p><code>配置引用路径（以“@”引用为项目的src目录为例）可拆分为如下两步操作</code><br> <code> - 配置webpack打包时将“@”解析为项目的src目录</code><br> <code> - 配置vsCode在路径中输入“@”时的路径提示</code></p>
@@ -287,29 +267,6 @@
 ]]></content>
       <tags>
         <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue3 整合 mock.js（2022）</title>
-    <url>/2022/09/19/vue3-zheng-he-mock-js-2022/</url>
-    <content><![CDATA[<h2 id="第一步：安装"><a href="#第一步：安装" class="headerlink" title="第一步：安装"></a>第一步：安装</h2><h3 id="1-安装mockjs"><a href="#1-安装mockjs" class="headerlink" title="1. 安装mockjs"></a>1. 安装mockjs</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 将mockjs 安装在 devDependencies 中，只能在生产环境中起作用</span><br><span class="line">npm install mockjs -D</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="2-安装axios"><a href="#2-安装axios" class="headerlink" title="2. 安装axios"></a>2. 安装axios</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm i axios --save</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="第二步：编写请求文件user-ts"><a href="#第二步：编写请求文件user-ts" class="headerlink" title="第二步：编写请求文件user.ts"></a>第二步：编写请求文件user.ts</h2><h3 id="1-在src下面新建mock文件夹，然后在其中创建-index-ts-文件"><a href="#1-在src下面新建mock文件夹，然后在其中创建-index-ts-文件" class="headerlink" title="1.在src下面新建mock文件夹，然后在其中创建 index.ts 文件"></a>1.在src下面新建mock文件夹，然后在其中创建 <code>index.ts</code> 文件</h3><p>将所需的mock请求文件<code>home.ts</code>引入，并在该页面做相关mock配置，具体配置可查看官网。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 首先引入Mock</span><br><span class="line">const Mock = require('mockjs')</span><br><span class="line"></span><br><span class="line">// 引入所有的mock文件</span><br><span class="line">require('@/mock/api/home')</span><br><span class="line"></span><br><span class="line">// 设置拦截ajax请求的相应时间</span><br><span class="line">// Mock.setup({</span><br><span class="line">//     timeout: '200-600'</span><br><span class="line">// });</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="2-在mock文件夹下建立api文件夹，mock请求文件在该页面写入。"><a href="#2-在mock文件夹下建立api文件夹，mock请求文件在该页面写入。" class="headerlink" title="2. 在mock文件夹下建立api文件夹，mock请求文件在该页面写入。"></a>2. 在mock文件夹下建立api文件夹，mock请求文件在该页面写入。</h3><p>以下示例文件为<code>home.ts</code> 文件,包含增删改查操作，供大家参考。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">const Mocks = require("mockjs")</span><br><span class="line"></span><br><span class="line">const tipList = [</span><br><span class="line">    {</span><br><span class="line">        id: 0,</span><br><span class="line">        title: "冬",</span><br><span class="line">        content: "农历正月初五,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 1,</span><br><span class="line">        title: "每日计划",</span><br><span class="line">        content: "每日计划"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 2,</span><br><span class="line">        title: "明日安排",</span><br><span class="line">        content: "明日安排"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 3,</span><br><span class="line">        title: "会议总结",</span><br><span class="line">        content: "会议议题。出现了什么问题;信息分享"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 4,</span><br><span class="line">        title: "电影清单",</span><br><span class="line">        content: "电影"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 5,</span><br><span class="line">        title: "歌曲收藏",</span><br><span class="line">        content: "无感"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 6,</span><br><span class="line">        title: "路程",</span><br><span class="line">        content: "路程"</span><br><span class="line">    }, {</span><br><span class="line">        id: 7,</span><br><span class="line">        title: "联系电话",</span><br><span class="line">        content: "2343242342342343"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 8,</span><br><span class="line">        title: "邮箱",</span><br><span class="line">        content: "24534534534@qq.com"</span><br><span class="line">    },</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// 获取所有便签</span><br><span class="line">const article = Mocks.mock("/home/article", () =&gt; {</span><br><span class="line">    return tipList</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">// 搜索便签</span><br><span class="line">const selectA = Mocks.mock("/home/selectArticle", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    const list: any[] = []</span><br><span class="line">    tipList.filter((item) =&gt; {</span><br><span class="line">        if (item.title.indexOf(obj.val) &gt;= 0) {</span><br><span class="line">            list.push(item)</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    return list;</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">// 获取便签详情s</span><br><span class="line">const details = Mocks.mock("/getDetail", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    for (let i = 0; i &lt; tipList.length; i++) {</span><br><span class="line">        if (tipList[i].id == obj.id) {</span><br><span class="line">            return tipList[i]</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line">// 修改便签内容</span><br><span class="line">const fex = Mocks.mock("/api/updateTip", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    tipList[obj.data.id].title = obj.data.title</span><br><span class="line">    tipList[obj.data.id].content = obj.data.content</span><br><span class="line">})</span><br><span class="line">// 删除便签</span><br><span class="line">const del = Mocks.mock("/api/deleteTip", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    for (let i = 0; i &lt; tipList.length; i++) {</span><br><span class="line">        if (tipList[i].id == obj.id) {</span><br><span class="line">            tipList.splice(i, 1)</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line">// 新增便签</span><br><span class="line">const add = Mocks.mock("/api/addTip", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    obj.data.id=tipList.length</span><br><span class="line">    tipList.push(obj.data)</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 返回模拟的数据及接口：</span><br><span class="line">module.exports = (router) =&gt; {</span><br><span class="line">    return [</span><br><span class="line">        router.get('/api/article', article),</span><br><span class="line">        router.get('/home/selectArticle', selectA),</span><br><span class="line">        router.get('/api/getDetail', details),</span><br><span class="line">        router.post('/api/updateTip', fex),</span><br><span class="line">        router.delete('/api/deleteTip', del),</span><br><span class="line">        router.put('/api/addTip', add),</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="3-写接口文件"><a href="#3-写接口文件" class="headerlink" title="3.写接口文件"></a>3.写接口文件</h3><p>在src 文件夹下新建 <code>api文件夹</code> ，在文件夹下新建<code>home.ts 文件</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">import axios from 'axios'</span><br><span class="line"></span><br><span class="line">export function getArticles() {</span><br><span class="line">    return axios.get('/home/article')  // mockjs返回的接口</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 搜索便签</span><br><span class="line">export function selectA(val) {</span><br><span class="line">    return axios.get('/home/selectArticle', { data: val })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 详情</span><br><span class="line">export function getDetail(id) {</span><br><span class="line">    return axios.get('/getDetail', { data: id })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 修改便签</span><br><span class="line">export function fex(data) {</span><br><span class="line">    return axios.post('/api/updateTip', { data: data })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 删除便签</span><br><span class="line">export function del(id) {</span><br><span class="line">    return axios.delete('/api/deleteTip', { data: id })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 新增便签</span><br><span class="line">export function add(data) {</span><br><span class="line">    return axios.put('/api/addTip', { data: data })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="4-在页面中引入"><a href="#4-在页面中引入" class="headerlink" title="4.在页面中引入"></a>4.在页面中引入</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">import { getDetail } from "../../api/home";</span><br><span class="line">...</span><br><span class="line">setup(){</span><br><span class="line">	...</span><br><span class="line">	getDetail(data).then((e) =&gt; {</span><br><span class="line">        if (e != null) {</span><br><span class="line">          datas.title = e.data.title;</span><br><span class="line">          datas.content = e.data.content;</span><br><span class="line">        } else {</span><br><span class="line">          datas.title = "";</span><br><span class="line">          datas.content = "";</span><br><span class="line">        }</span><br><span class="line">      });</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p><img src="https://img-blog.csdnimg.cn/35db179f75fa46e1a042fa8923ff8fbb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-]]></content>
-      <tags>
-        <tag>vue.js</tag>
-        <tag>前端</tag>
-        <tag>开发语言</tag>
       </tags>
   </entry>
   <entry>
@@ -375,6 +332,65 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue实现Word文档在线预览功能（内网、外网）！！！</title>
+    <url>/2022/09/19/vue-shi-xian-word-wen-dang-zai-xian-yu-lan-gong-neng-nei-wang-wai-wang/</url>
+    <content><![CDATA[<h2 id="内网实现方法："><a href="#内网实现方法：" class="headerlink" title="内网实现方法："></a><strong>内网实现方法：</strong></h2><p>需要下载两个插件，一定要注意！！</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm i docx-preview@0.1.4</span><br><span class="line"></span><br><span class="line">npm i jszip</span><br></pre></td></tr></tbody></table></figure>
+
+<p>正文中引入</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;div ref="preview"  id="preview" &gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	let docx = require("docx-preview");</span><br><span class="line">	window.JSZip = require("jszip");</span><br><span class="line">	</span><br><span class="line">    // 查看文档按钮</span><br><span class="line">    handleFile(row) {</span><br><span class="line">		this.getDocx() .then((response) =&gt; {</span><br><span class="line">			console.log(response);  // response为流文件</span><br><span class="line">			docx.renderAsync(response.data, this.$refs.preview);</span><br><span class="line">			// 渲染到页面（着重注意 this.$refs.preview要和&lt;div ref="preview"&gt;&lt;/div&gt;保持一致）</span><br><span class="line">		})</span><br><span class="line">		.catch(function (error) {});</span><br><span class="line">	}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="外网实现方法："><a href="#外网实现方法：" class="headerlink" title="外网实现方法："></a><strong>外网实现方法：</strong></h2><p>可以用下面这种方式：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;iframe</span><br><span class="line">	:src="`https://view.officeapps.live.com/op/view.aspx?src=${downloadUrl}`"</span><br><span class="line">	width="100%"</span><br><span class="line">	:height="height"</span><br><span class="line">	frameborder="1"</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>有时候使用这种方式会遇到下面提示：<br><img src="https://img-blog.csdnimg.cn/6a435d1088624d77b590b4b5e4d9e2a4.png#pic_center"></p>
+<p>不要因此就直接放弃这种方式，好好找找原因。我这边遇到该情况的原因是因为本地DNS不解析该链接，后将DNS改为</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">dns: 101.198.198.198</span><br><span class="line">     114.114.114.114</span><br></pre></td></tr></tbody></table></figure>
+<p>完美的解决了该问题。<br>好了，可以轻松实现文档预览啦</p>
+]]></content>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm run eject 报错This git repository has untracked files or uncommitted changes解决方案</title>
+    <url>/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/</url>
+    <content><![CDATA[<p>在创建 React 项目之后，使用 npm run eject 命令会报错：This git repository has untracked files or uncommitted changes。这个的原因是因为初始化项目之后，该项目并没有本地 git 仓库，而此项目目录下又有 .gitignore 文件，所以此时会向上级寻找未提交的项目。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1.初始化仓库</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></tbody></table></figure>
+<p>2.添加并提交</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m '初始化项目'</span><br></pre></td></tr></tbody></table></figure>
+<p>3.重新执行</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm run eject</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      <tags>
+        <tag>git</tag>
+        <tag>npm</tag>
+        <tag>node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue3 整合 mock.js（2022）</title>
+    <url>/2022/09/19/vue3-zheng-he-mock-js-2022/</url>
+    <content><![CDATA[<h2 id="第一步：安装"><a href="#第一步：安装" class="headerlink" title="第一步：安装"></a>第一步：安装</h2><h3 id="1-安装mockjs"><a href="#1-安装mockjs" class="headerlink" title="1. 安装mockjs"></a>1. 安装mockjs</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 将mockjs 安装在 devDependencies 中，只能在生产环境中起作用</span><br><span class="line">npm install mockjs -D</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-安装axios"><a href="#2-安装axios" class="headerlink" title="2. 安装axios"></a>2. 安装axios</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm i axios --save</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="第二步：编写请求文件user-ts"><a href="#第二步：编写请求文件user-ts" class="headerlink" title="第二步：编写请求文件user.ts"></a>第二步：编写请求文件user.ts</h2><h3 id="1-在src下面新建mock文件夹，然后在其中创建-index-ts-文件"><a href="#1-在src下面新建mock文件夹，然后在其中创建-index-ts-文件" class="headerlink" title="1.在src下面新建mock文件夹，然后在其中创建 index.ts 文件"></a>1.在src下面新建mock文件夹，然后在其中创建 <code>index.ts</code> 文件</h3><p>将所需的mock请求文件<code>home.ts</code>引入，并在该页面做相关mock配置，具体配置可查看官网。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">// 首先引入Mock</span><br><span class="line">const Mock = require('mockjs')</span><br><span class="line"></span><br><span class="line">// 引入所有的mock文件</span><br><span class="line">require('@/mock/api/home')</span><br><span class="line"></span><br><span class="line">// 设置拦截ajax请求的相应时间</span><br><span class="line">// Mock.setup({</span><br><span class="line">//     timeout: '200-600'</span><br><span class="line">// });</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-在mock文件夹下建立api文件夹，mock请求文件在该页面写入。"><a href="#2-在mock文件夹下建立api文件夹，mock请求文件在该页面写入。" class="headerlink" title="2. 在mock文件夹下建立api文件夹，mock请求文件在该页面写入。"></a>2. 在mock文件夹下建立api文件夹，mock请求文件在该页面写入。</h3><p>以下示例文件为<code>home.ts</code> 文件,包含增删改查操作，供大家参考。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">const Mocks = require("mockjs")</span><br><span class="line"></span><br><span class="line">const tipList = [</span><br><span class="line">    {</span><br><span class="line">        id: 0,</span><br><span class="line">        title: "冬",</span><br><span class="line">        content: "农历正月初五,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 1,</span><br><span class="line">        title: "每日计划",</span><br><span class="line">        content: "每日计划"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 2,</span><br><span class="line">        title: "明日安排",</span><br><span class="line">        content: "明日安排"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 3,</span><br><span class="line">        title: "会议总结",</span><br><span class="line">        content: "会议议题。出现了什么问题;信息分享"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 4,</span><br><span class="line">        title: "电影清单",</span><br><span class="line">        content: "电影"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 5,</span><br><span class="line">        title: "歌曲收藏",</span><br><span class="line">        content: "无感"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 6,</span><br><span class="line">        title: "路程",</span><br><span class="line">        content: "路程"</span><br><span class="line">    }, {</span><br><span class="line">        id: 7,</span><br><span class="line">        title: "联系电话",</span><br><span class="line">        content: "2343242342342343"</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        id: 8,</span><br><span class="line">        title: "邮箱",</span><br><span class="line">        content: "24534534534@qq.com"</span><br><span class="line">    },</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// 获取所有便签</span><br><span class="line">const article = Mocks.mock("/home/article", () =&gt; {</span><br><span class="line">    return tipList</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">// 搜索便签</span><br><span class="line">const selectA = Mocks.mock("/home/selectArticle", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    const list: any[] = []</span><br><span class="line">    tipList.filter((item) =&gt; {</span><br><span class="line">        if (item.title.indexOf(obj.val) &gt;= 0) {</span><br><span class="line">            list.push(item)</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    return list;</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">// 获取便签详情s</span><br><span class="line">const details = Mocks.mock("/getDetail", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    for (let i = 0; i &lt; tipList.length; i++) {</span><br><span class="line">        if (tipList[i].id == obj.id) {</span><br><span class="line">            return tipList[i]</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line">// 修改便签内容</span><br><span class="line">const fex = Mocks.mock("/api/updateTip", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    tipList[obj.data.id].title = obj.data.title</span><br><span class="line">    tipList[obj.data.id].content = obj.data.content</span><br><span class="line">})</span><br><span class="line">// 删除便签</span><br><span class="line">const del = Mocks.mock("/api/deleteTip", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    for (let i = 0; i &lt; tipList.length; i++) {</span><br><span class="line">        if (tipList[i].id == obj.id) {</span><br><span class="line">            tipList.splice(i, 1)</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line">// 新增便签</span><br><span class="line">const add = Mocks.mock("/api/addTip", (ops: any) =&gt; {</span><br><span class="line">    const obj = eval("(" + ops.body + ")")</span><br><span class="line">    obj.data.id=tipList.length</span><br><span class="line">    tipList.push(obj.data)</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 返回模拟的数据及接口：</span><br><span class="line">module.exports = (router) =&gt; {</span><br><span class="line">    return [</span><br><span class="line">        router.get('/api/article', article),</span><br><span class="line">        router.get('/home/selectArticle', selectA),</span><br><span class="line">        router.get('/api/getDetail', details),</span><br><span class="line">        router.post('/api/updateTip', fex),</span><br><span class="line">        router.delete('/api/deleteTip', del),</span><br><span class="line">        router.put('/api/addTip', add),</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-写接口文件"><a href="#3-写接口文件" class="headerlink" title="3.写接口文件"></a>3.写接口文件</h3><p>在src 文件夹下新建 <code>api文件夹</code> ，在文件夹下新建<code>home.ts 文件</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">import axios from 'axios'</span><br><span class="line"></span><br><span class="line">export function getArticles() {</span><br><span class="line">    return axios.get('/home/article')  // mockjs返回的接口</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 搜索便签</span><br><span class="line">export function selectA(val) {</span><br><span class="line">    return axios.get('/home/selectArticle', { data: val })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 详情</span><br><span class="line">export function getDetail(id) {</span><br><span class="line">    return axios.get('/getDetail', { data: id })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 修改便签</span><br><span class="line">export function fex(data) {</span><br><span class="line">    return axios.post('/api/updateTip', { data: data })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 删除便签</span><br><span class="line">export function del(id) {</span><br><span class="line">    return axios.delete('/api/deleteTip', { data: id })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 新增便签</span><br><span class="line">export function add(data) {</span><br><span class="line">    return axios.put('/api/addTip', { data: data })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-在页面中引入"><a href="#4-在页面中引入" class="headerlink" title="4.在页面中引入"></a>4.在页面中引入</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">import { getDetail } from "../../api/home";</span><br><span class="line">...</span><br><span class="line">setup(){</span><br><span class="line">	...</span><br><span class="line">	getDetail(data).then((e) =&gt; {</span><br><span class="line">        if (e != null) {</span><br><span class="line">          datas.title = e.data.title;</span><br><span class="line">          datas.content = e.data.content;</span><br><span class="line">        } else {</span><br><span class="line">          datas.title = "";</span><br><span class="line">          datas.content = "";</span><br><span class="line">        }</span><br><span class="line">      });</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p><img src="https://img-blog.csdnimg.cn/35db179f75fa46e1a042fa8923ff8fbb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2VyZW5kaXBpdHlN,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+]]></content>
+      <tags>
+        <tag>vue.js</tag>
+        <tag>前端</tag>
+        <tag>开发语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用NVM安装NodeJS并解决npm下载依赖失效问题（最全流程）</title>
     <url>/2022/09/19/shi-yong-nvm-an-zhuang-nodejs-bing-jie-jue-npm-xia-zai-yi-lai-shi-xiao-wen-ti-zui-quan-liu-cheng/</url>
     <content><![CDATA[<p>本人因为刚学习react，需要创建项目。下载过react依赖后才发现黑窗口提示我因node版本过低无法创建项目，怎么办呢？我去网上看了很多node升级的文章，大多数说的是重新去官网下载更高版本，我就跟着他们一步步走，但是很快问题就出现了。先是文章中说应该更改node缓存地址，防止给C盘造成过大压力。这就涉及到更改环境变量，我一顿操作后忽然发现我新安装的node版本查不到。emmmmmm 这是为什么呢？我去看了我的文件夹，发现之前的NodeJs版本是由nvm管理的。哦~~~原来是这样。我立马改道又去搜了nvm管理nodejs怎么下载更高级别的node版本。就这样，我又按照nvm的方式一步步输入命令。OK！nodejs版本下载好了。npm版本也能查到。我终于可以开始我的react之旅了。  但是！！老话说得好，人不能高兴的太早。我发现我的npm失效了，没办法下载任何依赖。我又能怎么办呢，只能改道重新去查询npm失效的解决办法，我看了很多文章，各种方法全试了，最起码在我这他们都不行。具体报错及尝试我就不在这里一一记录了。<br>我说说我的解决办法吧。我最终是决定卸载Nodejs以及nvm，重新走一遍流程。<br>因记录了自己整个解决问题的过程，废话有点多。<strong>大家可直接跳跃至标题（一：NVM介绍）阅读</strong></p>
@@ -425,22 +441,6 @@
         <tag>react.js</tag>
         <tag>npm</tag>
         <tag>node.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm run eject 报错This git repository has untracked files or uncommitted changes解决方案</title>
-    <url>/2022/09/19/npm-run-eject-bao-cuo-this-git-repository-has-untracked-files-or-uncommitted-changes-jie-jue-fang-an/</url>
-    <content><![CDATA[<p>在创建 React 项目之后，使用 npm run eject 命令会报错：This git repository has untracked files or uncommitted changes。这个的原因是因为初始化项目之后，该项目并没有本地 git 仓库，而此项目目录下又有 .gitignore 文件，所以此时会向上级寻找未提交的项目。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1.初始化仓库</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></tbody></table></figure>
-<p>2.添加并提交</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m '初始化项目'</span><br></pre></td></tr></tbody></table></figure>
-<p>3.重新执行</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm run eject</span><br></pre></td></tr></tbody></table></figure>]]></content>
-      <tags>
-        <tag>npm</tag>
-        <tag>node.js</tag>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -527,6 +527,22 @@
 ]]></content>
   </entry>
   <entry>
+    <title>取消el-upload自带动画效果及图片不裁剪功能</title>
+    <url>/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/</url>
+    <content><![CDATA[<p>在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">.<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line"> .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果加上后仍然没有效果，可以加上::v-deep深度选择器</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>一起试试吧！！</p>
+]]></content>
+      <tags>
+        <tag>vue.js</tag>
+        <tag>动画</tag>
+        <tag>css3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前后端分离开发之权限篇及VUE路由守卫</title>
     <url>/2022/09/19/qian-hou-duan-fen-chi-kai-fa-zhi-quan-xian-pian-ji-vue-lu-you-shou-wei-next-next-to-replace-true-next-shuo-ming/</url>
     <content><![CDATA[<p>写项目过程中在权限部分遇到了不少有关<code>next()</code>的问题，解决完之后发现对于权限篇的整体逻辑清晰不少，在这里记录一下。<br>首先是路由守卫，是不是感觉简简单单</p>
@@ -562,22 +578,6 @@
         <tag>vue.js</tag>
         <tag>javascript</tag>
         <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>取消el-upload自带动画效果及图片不裁剪功能</title>
-    <url>/2022/09/19/qu-xiao-el-upload-zi-dai-dong-hua-xiao-guo-ji-tu-pian-bu-cai-jian-gong-neng/</url>
-    <content><![CDATA[<p>在应用el-upload所在页面加上如下代码，可以取消过渡效果，并且更改图片显示方式</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">.<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line"> .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>如果加上后仍然没有效果，可以加上::v-deep深度选择器</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/*去除upload组件过渡效果*/</span></span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item {</span><br><span class="line">  <span class="attr">transition</span>: none !important;</span><br><span class="line">}</span><br><span class="line">::v-deep .<span class="property">el</span>-upload-list__item-thumbnail {</span><br><span class="line">    <span class="comment">/* 图片在方框内显示长边 */</span></span><br><span class="line">    object-<span class="attr">fit</span>: scale-down !important;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>一起试试吧！！</p>
-]]></content>
-      <tags>
-        <tag>vue.js</tag>
-        <tag>动画</tag>
-        <tag>css3</tag>
       </tags>
   </entry>
   <entry>
